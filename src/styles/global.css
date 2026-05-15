@@ -1,0 +1,163 @@
+@import "tailwindcss";
+
+:root {
+  --color-bg: #ffffff;
+  --color-surface: rgba(255, 255, 255, 0.9);
+  --color-text: #0f172a;
+  --color-muted: #475569;
+  --color-border: rgba(15, 23, 42, 0.12);
+  --color-accent: #22d3ee;
+  --color-accent-soft: #67e8f9;
+  --nav-offset: 6.75rem;
+  --section-accent-top: 15%;
+  --section-accent-height: 24%;
+  --section-header-offset: clamp(3.2rem, 6vh, 4.8rem);
+  --contact-accent-top: 19%;
+  --contact-accent-height: 24%;
+  --contact-header-offset: clamp(4rem, 7.5vh, 5.8rem);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--color-bg);
+  color: var(--color-text);
+  overflow-x: hidden;
+  font-family:
+    "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@keyframes hero-name-blink {
+  0%,
+  100% {
+    background-position: 100% 100%;
+  }
+
+  50% {
+    background-position: 0% 0%;
+  }
+}
+
+.whatsapp-border-sweep {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  will-change: transform;
+  transform: translateZ(0) scale(1);
+  border: 1px solid rgba(18, 140, 126, 0.18);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(241, 245, 249, 0.94) 100%);
+  box-shadow:
+    0 14px 30px rgba(15, 23, 42, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  color: #0f172a;
+  transition:
+    transform 930ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 930ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 930ms cubic-bezier(0.22, 1, 0.36, 1),
+    color 930ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.whatsapp-border-sweep::before {
+  content: "";
+  position: absolute;
+  top: -18%;
+  left: -28%;
+  width: 38%;
+  height: 136%;
+  border-radius: 9999px;
+  background:
+    linear-gradient(
+      115deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.18) 20%,
+      rgba(255, 255, 255, 0.85) 48%,
+      rgba(167, 243, 208, 0.4) 62%,
+      rgba(255, 255, 255, 0) 100%
+    );
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+  filter: blur(4px);
+  transition: opacity 930ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.whatsapp-border-sweep::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background:
+    radial-gradient(circle at 18% 50%, rgba(37, 211, 102, 0.16), transparent 42%),
+    radial-gradient(circle at 84% 50%, rgba(18, 140, 126, 0.13), transparent 36%);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 930ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.whatsapp-button-surface {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92) 0%, rgba(248, 250, 252, 0.88) 100%);
+  color: inherit;
+  transition:
+    background 930ms cubic-bezier(0.22, 1, 0.36, 1),
+    color 930ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.whatsapp-icon-shell {
+  background: transparent;
+  color: #0f172a;
+  box-shadow: none;
+}
+
+.whatsapp-border-sweep:hover,
+.whatsapp-border-sweep:focus-visible {
+  transform: translateZ(0) scale(1.09);
+  border-color: rgba(18, 140, 126, 0.36);
+  color: #0f172a;
+  box-shadow:
+    0 18px 34px rgba(15, 23, 42, 0.11),
+    0 0 0 1px rgba(18, 140, 126, 0.08),
+    0 0 28px rgba(37, 211, 102, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+.whatsapp-border-sweep:hover::before,
+.whatsapp-border-sweep:focus-visible::before {
+  opacity: 1;
+}
+
+.whatsapp-border-sweep:hover::after,
+.whatsapp-border-sweep:focus-visible::after {
+  opacity: 1;
+}
+
+.whatsapp-border-sweep:hover .whatsapp-button-surface,
+.whatsapp-border-sweep:focus-visible .whatsapp-button-surface {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(236, 253, 245, 0.96) 100%);
+}
+
+.whatsapp-border-sweep:hover .whatsapp-icon-shell,
+.whatsapp-border-sweep:focus-visible .whatsapp-icon-shell {
+  background: transparent;
+  color: #0f172a;
+  box-shadow: none;
+}
+
+.whatsapp-border-sweep:focus-visible {
+  outline: none;
+}

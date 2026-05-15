@@ -1,0 +1,31 @@
+<svg width="960" height="960" viewBox="0 0 960 960" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="960" height="960" rx="80" fill="url(#bg)"/>
+  <circle cx="734" cy="186" r="98" fill="white" fill-opacity="0.18"/>
+  <circle cx="190" cy="758" r="154" fill="white" fill-opacity="0.1"/>
+  <rect x="98" y="116" width="764" height="728" rx="52" fill="white" fill-opacity="0.18" stroke="white" stroke-opacity="0.4" stroke-width="6"/>
+  <rect x="148" y="164" width="664" height="632" rx="36" fill="url(#glass)"/>
+  <path d="M480 230C552.902 230 612 289.098 612 362V396C612 468.902 552.902 528 480 528C407.098 528 348 468.902 348 396V362C348 289.098 407.098 230 480 230Z" fill="#F8D2B4"/>
+  <path d="M352 374C352 296.68 414.68 234 492 234H500C577.32 234 640 296.68 640 374V404C640 412.837 632.837 420 624 420H368C359.163 420 352 412.837 352 404V374Z" fill="#241511"/>
+  <path d="M438 332C460.091 332 478 314.091 478 292C478 269.909 460.091 252 438 252C415.909 252 398 269.909 398 292C398 314.091 415.909 332 438 332Z" fill="#241511"/>
+  <path d="M532 332C554.091 332 572 314.091 572 292C572 269.909 554.091 252 532 252C509.909 252 492 269.909 492 292C492 314.091 509.909 332 532 332Z" fill="#241511"/>
+  <path d="M318 710C318 591.26 414.26 495 533 495H543C661.74 495 758 591.26 758 710V796H318V710Z" fill="#191919"/>
+  <path d="M252 786C252 640.749 369.749 523 515 523C660.251 523 778 640.749 778 786V796H252V786Z" fill="#252525"/>
+  <path d="M481 495L586 620L532 658L426 540L481 495Z" fill="#7A6255"/>
+  <path d="M398 560L442 796H356L302 634L398 560Z" fill="#151515"/>
+  <path d="M670 530L640 600L560 578L574 514L670 530Z" fill="#151515"/>
+  <path d="M480 560C494.359 560 506 548.359 506 534C506 519.641 494.359 508 480 508C465.641 508 454 519.641 454 534C454 548.359 465.641 560 480 560Z" fill="#F0B891"/>
+  <path d="M212 796C300.83 754.632 390.068 734 480 734C569.932 734 659.17 754.632 748 796H212Z" fill="white" fill-opacity="0.22"/>
+  <text x="160" y="760" fill="white" fill-opacity="0.88" font-family="Segoe UI, Arial, sans-serif" font-size="66" font-weight="700">AGUSTIN</text>
+  <text x="160" y="820" fill="white" fill-opacity="0.72" font-family="Segoe UI, Arial, sans-serif" font-size="28" letter-spacing="8">PROFILE PLACEHOLDER</text>
+  <defs>
+    <linearGradient id="bg" x1="98" y1="96" x2="864" y2="860" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D8E4FF"/>
+      <stop offset="0.48" stop-color="#BFCBFF"/>
+      <stop offset="1" stop-color="#A7B5FF"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="148" y1="164" x2="812" y2="796" gradientUnits="userSpaceOnUse">
+      <stop stop-color="white" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="white" stop-opacity="0.16"/>
+    </linearGradient>
+  </defs>
+</svg>
