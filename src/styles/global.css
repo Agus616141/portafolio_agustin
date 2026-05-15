@@ -9,16 +9,46 @@
   --color-accent: #22d3ee;
   --color-accent-soft: #67e8f9;
   --nav-offset: 6.75rem;
-  --section-accent-top: 15%;
-  --section-accent-height: 24%;
-  --section-header-offset: clamp(3.2rem, 6vh, 4.8rem);
-  --contact-accent-top: 19%;
-  --contact-accent-height: 24%;
-  --contact-header-offset: clamp(4rem, 7.5vh, 5.8rem);
+  --section-accent-top: calc(var(--nav-offset) + clamp(0.7rem, 1.8vw, 1.3rem));
+  --section-accent-height: clamp(4.75rem, 10svh, 6.9rem);
+  --section-header-gap: clamp(1.1rem, 2.8vw, 1.9rem);
+  --section-shell-top: calc(var(--section-accent-height) + var(--section-header-gap));
+  --contact-accent-top: calc(var(--nav-offset) + clamp(1.2rem, 2.6vw, 2rem));
+  --contact-accent-height: clamp(4.9rem, 9.5svh, 7rem);
+  --contact-header-gap: clamp(1.45rem, 3vw, 2.3rem);
+  --contact-shell-top: calc(var(--contact-accent-height) + var(--contact-header-gap));
+}
+
+@media (max-width: 640px) {
+  :root {
+    --nav-offset: 5.7rem;
+    --section-accent-top: calc(var(--nav-offset) + 0.55rem);
+    --section-accent-height: clamp(3.5rem, 8svh, 4.8rem);
+    --section-header-gap: clamp(0.9rem, 3vw, 1.3rem);
+    --section-shell-top: calc(var(--section-accent-height) + var(--section-header-gap));
+    --contact-accent-top: calc(var(--nav-offset) + 0.85rem);
+    --contact-accent-height: clamp(3.8rem, 8svh, 5rem);
+    --contact-header-gap: clamp(1rem, 3vw, 1.55rem);
+    --contact-shell-top: calc(var(--contact-accent-height) + var(--contact-header-gap));
+  }
+}
+
+@media (max-width: 640px) and (max-height: 780px) {
+  :root {
+    --section-accent-height: clamp(3.1rem, 6.6svh, 4.1rem);
+    --section-header-gap: clamp(0.75rem, 2.6vw, 1.05rem);
+    --section-shell-top: calc(var(--section-accent-height) + var(--section-header-gap));
+    --contact-accent-height: clamp(3.25rem, 6.9svh, 4.4rem);
+    --contact-header-gap: clamp(0.85rem, 2.8vw, 1.25rem);
+    --contact-shell-top: calc(var(--contact-accent-height) + var(--contact-header-gap));
+  }
 }
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--nav-offset) + 1rem);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {

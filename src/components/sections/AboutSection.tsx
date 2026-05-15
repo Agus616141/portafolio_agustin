@@ -10,11 +10,15 @@ import {
 
 export function AboutSection() {
   return (
-    <SectionShell id="about" contentClassName="max-w-[1120px] pt-[var(--section-header-offset)]">
-      <div className="grid gap-10 md:gap-12 lg:grid-cols-[0.98fr_1fr] lg:items-center lg:gap-16">
+    <SectionShell
+      id="about"
+      bodyClassName="gap-8 sm:gap-12"
+      maxWidthClassName="max-w-[1120px]"
+    >
+      <div className="grid w-full gap-8 md:gap-12 lg:grid-cols-[0.98fr_1fr] lg:items-center lg:gap-16">
         <SectionImageFrame
-          src="/images/profile-placeholder.svg"
-          alt={`Placeholder visual de ${aboutProfile.name}`}
+          src={aboutProfile.imageSrc}
+          alt={aboutProfile.imageAlt}
           gradientClassName="bg-[linear-gradient(160deg,#ffffff,#dde4ff)]"
           wrapperClassName="order-2 lg:order-1"
           loading="lazy"
@@ -28,7 +32,7 @@ export function AboutSection() {
               Mi
             </span>
           </h2>
-          <div className={`${descriptionHoverClass} mt-6 max-w-xl`}>
+          <div className={`${descriptionHoverClass} mt-5 max-w-xl sm:mt-6`}>
             <p className="text-2xl font-bold text-slate-900">
               {aboutProfile.name}
             </p>
@@ -37,19 +41,19 @@ export function AboutSection() {
             </p>
           </div>
 
-          <div className="mt-8 space-y-6 sm:space-y-7">
+          <div className="mt-6 space-y-5 sm:mt-8 sm:space-y-7">
             {aboutProfile.highlights.map((item) => (
               <div key={item.title} className={descriptionHoverClass}>
                 <h3 className="border-l-4 border-slate-900 pl-3 text-xl font-bold text-slate-900 sm:text-2xl">
                   {item.title}
                 </h3>
-                <p className="mt-3 text-base font-semibold text-slate-900">
+                <p className="mt-2.5 text-base font-semibold text-slate-900 sm:mt-3">
                   {item.place}
                 </p>
-                <p className="mt-1 text-sm leading-7 text-[var(--color-muted)]">
+                <p className="mt-1 text-sm leading-6 text-[var(--color-muted)] sm:leading-7">
                   {item.detail}
                 </p>
-                <p className="mt-1 text-sm leading-7 text-[var(--color-muted)]">
+                <p className="mt-1 text-sm leading-6 text-[var(--color-muted)] sm:leading-7">
                   {item.period}
                 </p>
               </div>

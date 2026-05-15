@@ -26,14 +26,20 @@ const socialLinks = [
 ] as const
 
 const roleCardClass =
-  `${roleSwapClass} inline-flex min-h-[56px] min-w-0 max-w-full items-center rounded-xl border border-slate-200 bg-slate-100 px-3.5 py-3 shadow-[0_12px_24px_rgba(15,23,42,0.08)] sm:min-h-[72px] sm:px-5 sm:py-4`
+  `${roleSwapClass} inline-flex min-h-[56px] min-w-0 max-w-full items-center rounded-xl border border-slate-200 bg-slate-100 px-3 py-3 shadow-[0_12px_24px_rgba(15,23,42,0.08)] sm:min-h-[72px] sm:px-5 sm:py-4`
 
 export function HeroSection() {
   const { typedText, isVisible, showNextItem } = useRotatingText(hero.roles)
 
   return (
-    <SectionShell id="hero" className="overflow-hidden" contentClassName="relative max-w-[1120px]">
-      <div className="grid gap-10 md:gap-12 lg:grid-cols-[1fr_0.98fr] lg:items-center lg:gap-16">
+    <SectionShell
+      id="hero"
+      className="overflow-hidden"
+      contentClassName="relative"
+      bodyClassName="gap-8 sm:gap-12"
+      maxWidthClassName="max-w-[1120px]"
+    >
+      <div className="grid w-full gap-8 md:gap-12 lg:grid-cols-[1fr_0.98fr] lg:items-center lg:gap-16">
         <div className="max-w-2xl">
           <h1 className={`${titleHoverClass} text-3xl font-black leading-[1.04] text-black sm:text-4xl md:text-5xl lg:text-6xl`}>
             Hola, soy{' '}
@@ -61,7 +67,7 @@ export function HeroSection() {
                 isVisible ? 'translate-y-0 opacity-100' : 'translate-y-1 opacity-0',
               )}
             >
-              <span className="block whitespace-nowrap font-mono text-base font-semibold tracking-tight text-slate-900 sm:text-xl md:text-2xl">
+              <span className="block whitespace-nowrap font-mono text-[0.92rem] font-semibold tracking-tight text-slate-900 sm:text-xl md:text-2xl">
                 {typedText}
               </span>
               <span className="ml-1.5 h-6 w-1 shrink-0 animate-pulse rounded-full bg-sky-400 sm:h-7" />
@@ -78,19 +84,19 @@ export function HeroSection() {
               className="w-full justify-center gap-2 border border-black bg-white px-6 text-black hover:border-slate-800 hover:bg-slate-800 hover:text-white sm:w-auto"
             >
               <LuArrowRight className="text-base" />
-              Contacto
+              {hero.primaryButtonLabel}
             </Button>
             <Button
-              href="/cv/Agustin_CV.pdf"
+              href={hero.secondaryButtonHref}
               download
               className="w-full justify-center gap-2 border-black bg-black px-6 text-white hover:border-slate-800 hover:bg-slate-800 hover:text-white sm:w-auto"
             >
               <LuDownload className="text-base" />
-              Descargar CV
+              {hero.secondaryButtonLabel}
             </Button>
           </div>
 
-          <div className="mt-10 max-w-lg border-t border-[var(--color-border)] pt-5 sm:mt-14">
+          <div className="mt-8 max-w-lg border-t border-[var(--color-border)] pt-4 sm:mt-14 sm:pt-5">
             <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-[var(--color-muted)]">
               {hero.socialLabel}
             </p>
@@ -116,8 +122,8 @@ export function HeroSection() {
         </div>
 
         <SectionImageFrame
-          src="/images/profile-placeholder.svg"
-          alt={`Placeholder visual de ${hero.name}`}
+          src={hero.imageSrc}
+          alt={hero.imageAlt}
           gradientClassName="bg-[linear-gradient(160deg,#d6deff,#ffffff)]"
           loading="eager"
           fetchPriority="high"

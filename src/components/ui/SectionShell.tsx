@@ -5,8 +5,11 @@ import { SectionReveal } from './SectionReveal'
 
 type SectionShellProps = {
   id: string
+  header?: ReactNode
   className?: string
   contentClassName?: string
+  bodyClassName?: string
+  maxWidthClassName?: string
   backgroundClassName?: string
   children: ReactNode
 }
@@ -16,8 +19,11 @@ const defaultSectionBackgroundClass =
 
 export function SectionShell({
   id,
+  header,
   className,
   contentClassName,
+  bodyClassName,
+  maxWidthClassName,
   backgroundClassName,
   children,
 }: SectionShellProps) {
@@ -25,10 +31,27 @@ export function SectionShell({
     <SectionFrame
       id={id}
       className={className}
+      layoutClassName="min-h-svh items-stretch"
+      spacingClassName="px-4 pb-12 sm:px-6 sm:pb-20"
       backgroundClassName={backgroundClassName ?? defaultSectionBackgroundClass}
     >
-      <SectionReveal className={cn('mx-auto w-full max-w-[min(100%,1440px)]', contentClassName)}>
-        {children}
+      <SectionReveal className={cn('mx-auto flex w-full max-w-[min(100%,1440px)] flex-1', maxWidthClassName)}>
+        <div className={cn('mx-auto flex w-full flex-1 flex-col', contentClassName)}>
+          <div
+            aria-hidden="true"
+            className="h-[var(--section-shell-top)] shrink-0"
+          />
+          <div
+            aria-hidden="true"
+            data-section-anchor="true"
+            className="h-0 w-full shrink-0"
+          />
+
+          <div className={cn('flex flex-1 flex-col items-center justify-center gap-8 sm:gap-12', bodyClassName)}>
+            {header ? <div className="w-full shrink-0">{header}</div> : null}
+            {children}
+          </div>
+        </div>
       </SectionReveal>
     </SectionFrame>
   )

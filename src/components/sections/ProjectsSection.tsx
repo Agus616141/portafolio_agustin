@@ -23,7 +23,7 @@ function ProjectVisual({
 }: ProjectVisualProps) {
   return (
     <div
-      className={`relative isolate h-[196px] overflow-hidden rounded-t-[1rem] ${visual.gradientClassName}`}
+      className={`relative isolate h-[182px] overflow-hidden rounded-t-[1rem] sm:h-[196px] ${visual.gradientClassName}`}
     >
       <img
         src={image}
@@ -60,23 +60,25 @@ export function ProjectsSection() {
     projectsSection.title.split(' ')
 
   return (
-    <SectionShell id="projects" contentClassName="space-y-10 sm:space-y-12">
-      <CenteredSectionHeader
-        title={
-          <>
-            {projectsLead}{' '}
-            {projectsAccent ? (
-              <span className={nameBlinkClass}>
-                {projectsAccent}
-              </span>
-            ) : null}
-          </>
-        }
-        description={projectsSection.description}
-        className="pt-[var(--section-header-offset)]"
-      />
-
-      <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,320px),360px))] justify-center gap-6">
+    <SectionShell
+      id="projects"
+      header={(
+        <CenteredSectionHeader
+          title={
+            <>
+              {projectsLead}{' '}
+              {projectsAccent ? (
+                <span className={nameBlinkClass}>
+                  {projectsAccent}
+                </span>
+              ) : null}
+            </>
+          }
+          description={projectsSection.description}
+        />
+      )}
+    >
+      <div className="grid w-full grid-cols-[repeat(auto-fit,minmax(min(100%,280px),360px))] justify-center gap-5 sm:gap-6">
         {projects.map((project) => {
           const LinkIcon =
             project.ctaType === 'github' ? LuGithub : LuSquareArrowOutUpRight
@@ -92,12 +94,12 @@ export function ProjectsSection() {
                   visual={project.visual}
                 />
 
-                <div className="flex min-h-[220px] flex-1 flex-col justify-between space-y-4 rounded-b-[1rem] border border-black/0 bg-white px-4 py-4 sm:min-h-[232px] sm:px-5 sm:py-5 shadow-[0_14px_30px_rgba(15,23,42,0.08)] transition-all duration-300 ease-out group-hover:border-black/80 group-hover:shadow-[0_24px_45px_rgba(15,23,42,0.16)]">
+                <div className="flex min-h-[204px] flex-1 flex-col justify-between space-y-3 rounded-b-[1rem] border border-black/0 bg-white px-4 py-4 sm:min-h-[232px] sm:space-y-4 sm:px-5 sm:py-5 shadow-[0_14px_30px_rgba(15,23,42,0.08)] transition-all duration-300 ease-out group-hover:border-black/80 group-hover:shadow-[0_24px_45px_rgba(15,23,42,0.16)]">
                   <div className="space-y-2">
                     <h3 className="text-[1.22rem] font-bold leading-tight tracking-[-0.03em] text-slate-900">
                       {project.title}
                     </h3>
-                    <p className="text-[0.92rem] leading-6 text-slate-500 sm:min-h-[74px]">
+                    <p className="text-[0.9rem] leading-6 text-slate-500 sm:min-h-[74px] sm:text-[0.92rem]">
                       {project.description}
                     </p>
                   </div>
@@ -113,7 +115,7 @@ export function ProjectsSection() {
                     ))}
                   </div>
 
-                  <div className="flex flex-wrap items-center justify-between gap-3 pt-3">
+                  <div className="flex flex-wrap items-center justify-between gap-3 pt-2 sm:pt-3">
                     {isPlaceholderLink ? (
                       <span className="inline-flex items-center gap-2 text-[0.92rem] font-semibold text-slate-900 opacity-80 [text-shadow:0_6px_12px_rgba(15,23,42,0.14)]">
                         <LinkIcon className="text-[0.98rem] [filter:drop-shadow(0_4px_8px_rgba(15,23,42,0.12))]" />

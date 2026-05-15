@@ -19,7 +19,7 @@ export function SectionImageFrame({
   fetchPriority = 'auto',
 }: SectionImageFrameProps) {
   return (
-    <div className={cn('mx-auto w-full max-w-[360px] sm:max-w-[440px] lg:max-w-[500px]', wrapperClassName)}>
+    <div className={cn('mx-auto w-full max-w-[300px] sm:max-w-[440px] lg:max-w-[500px]', wrapperClassName)}>
       <div className={imageFrameClass}>
         <div className={cn('aspect-[0.9/1.06] overflow-hidden rounded-[1.1rem] sm:rounded-[1.35rem]', gradientClassName)}>
           <img

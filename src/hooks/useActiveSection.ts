@@ -8,25 +8,50 @@ export function useActiveSection(sectionIds: string[]) {
       .map((id) => document.getElementById(id))
       .filter((section): section is HTMLElement => section !== null)
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visibleSections = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)
+    if (sections.length === 0) {
+      return
+    }
 
-        if (visibleSections.length > 0) {
-          setActiveSection(visibleSections[0].target.id)
+    let frameId = 0
+
+    const updateActiveSection = () => {
+      const viewportHeight = window.innerHeight
+      const marker = window.scrollY + Math.min(Math.max(viewportHeight * 0.32, 160), 340)
+
+      let currentSection = sections[0]?.id ?? ''
+
+      sections.forEach((section) => {
+        const sectionTop = section.offsetTop
+        const sectionBottom = sectionTop + section.offsetHeight
+
+        if (marker >= sectionTop && marker < sectionBottom) {
+          currentSection = section.id
         }
-      },
-      {
-        rootMargin: '-30% 0px -45% 0px',
-        threshold: [0.2, 0.35, 0.5, 0.7],
-      },
-    )
+      })
 
-    sections.forEach((section) => observer.observe(section))
+      const lastSection = sections[sections.length - 1]
 
-    return () => observer.disconnect()
+      if (lastSection && window.scrollY + viewportHeight >= document.documentElement.scrollHeight - 8) {
+        currentSection = lastSection.id
+      }
+
+      setActiveSection(currentSection)
+    }
+
+    const scheduleUpdate = () => {
+      cancelAnimationFrame(frameId)
+      frameId = window.requestAnimationFrame(updateActiveSection)
+    }
+
+    scheduleUpdate()
+    window.addEventListener('scroll', scheduleUpdate, { passive: true })
+    window.addEventListener('resize', scheduleUpdate)
+
+    return () => {
+      cancelAnimationFrame(frameId)
+      window.removeEventListener('scroll', scheduleUpdate)
+      window.removeEventListener('resize', scheduleUpdate)
+    }
   }, [sectionIds])
 
   return activeSection

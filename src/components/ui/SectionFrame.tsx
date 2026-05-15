@@ -29,7 +29,7 @@ export function SectionFrame({
       aria-labelledby={ariaLabelledby}
       data-section-frame="true"
       className={cn(
-        'relative z-0 flex overflow-hidden isolate',
+        'relative z-0 flex scroll-mt-[calc(var(--nav-offset)+1rem)] overflow-hidden isolate',
         layoutClassName,
         spacingClassName,
         className,
