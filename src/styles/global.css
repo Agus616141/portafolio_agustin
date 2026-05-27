@@ -1,0 +1,637 @@
+@import "tailwindcss";
+
+:root {
+  --nav-offset: 6.75rem;
+  --section-shell-top: clamp(7rem, 14svh, 9rem);
+  --contact-shell-top: clamp(7.2rem, 14svh, 9.4rem);
+}
+
+:root,
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-bg: #070816;
+  --color-surface: rgba(14, 15, 34, 0.8);
+  --color-surface-strong: rgba(14, 15, 34, 0.94);
+  --color-surface-soft: rgba(255, 255, 255, 0.045);
+  --color-surface-contrast: rgba(255, 255, 255, 0.085);
+  --color-text: #f7f3ff;
+  --color-muted: #b7b1d8;
+  --color-subtle: #8b86b3;
+  --color-border: rgba(150, 123, 255, 0.18);
+  --color-border-strong: rgba(150, 123, 255, 0.36);
+  --color-accent: #8b5cff;
+  --color-accent-soft: #b690ff;
+  --color-accent-strong: #6f47f4;
+  --color-accent-alt: #79dcff;
+  --panel-shadow: 0 20px 54px rgba(1, 4, 18, 0.52);
+  --panel-shadow-strong: 0 24px 72px rgba(1, 4, 18, 0.62);
+  --nav-surface: rgba(10, 11, 27, 0.82);
+  --nav-border: rgba(163, 140, 255, 0.18);
+  --nav-shadow:
+    0 18px 38px rgba(2, 4, 16, 0.52),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  --nav-hover-bg: rgba(255, 255, 255, 0.06);
+  --nav-active-bg: linear-gradient(135deg, #8658ff 0%, #643be7 100%);
+  --nav-active-text: #ffffff;
+  --button-primary-bg: linear-gradient(135deg, #8a5cff 0%, #6d48f5 100%);
+  --button-primary-bg-hover: linear-gradient(135deg, #966cff 0%, #7855fb 100%);
+  --button-primary-border: rgba(167, 143, 255, 0.32);
+  --button-primary-text: #ffffff;
+  --button-secondary-bg: rgba(255, 255, 255, 0.035);
+  --button-secondary-bg-hover: rgba(255, 255, 255, 0.08);
+  --button-secondary-border: rgba(156, 132, 255, 0.2);
+  --button-secondary-border-hover: rgba(177, 154, 255, 0.34);
+  --button-secondary-text: #f6f3ff;
+  --badge-bg: rgba(139, 92, 246, 0.1);
+  --badge-border: rgba(153, 126, 255, 0.24);
+  --badge-text: #d8d0fb;
+  --badge-hover-bg: linear-gradient(135deg, rgba(121, 220, 255, 0.95) 0%, rgba(182, 144, 255, 0.88) 100%);
+  --badge-hover-border: rgba(121, 220, 255, 0.78);
+  --badge-hover-text: #07101f;
+  --badge-hover-shadow:
+    0 14px 32px rgba(121, 220, 255, 0.24),
+    0 0 22px rgba(139, 92, 246, 0.22);
+  --surface-card-bg: linear-gradient(180deg, rgba(13, 14, 31, 0.92) 0%, rgba(9, 10, 24, 0.98) 100%);
+  --surface-card-bg-soft: linear-gradient(180deg, rgba(17, 18, 38, 0.86) 0%, rgba(11, 12, 27, 0.94) 100%);
+  --project-card-bg: linear-gradient(180deg, rgba(13, 14, 31, 0.88) 0%, rgba(9, 10, 24, 0.95) 100%);
+  --interactive-row-bg: rgba(255, 255, 255, 0.03);
+  --image-frame-bg: linear-gradient(180deg, rgba(15, 16, 36, 0.96) 0%, rgba(8, 9, 22, 0.98) 100%);
+  --image-frame-border: rgba(152, 124, 255, 0.22);
+  --image-stage-bg:
+    radial-gradient(circle at 18% 12%, rgba(151, 107, 255, 0.56) 0%, rgba(123, 82, 255, 0.18) 24%, transparent 46%),
+    radial-gradient(circle at 84% 82%, rgba(191, 90, 255, 0.34) 0%, transparent 28%),
+    linear-gradient(160deg, #1d1443 0%, #0d1029 56%, #090b1d 100%);
+  --image-frame-shadow:
+    0 24px 58px rgba(1, 4, 18, 0.54),
+    0 0 0 1px rgba(255, 255, 255, 0.03);
+  --hero-role-bg: linear-gradient(180deg, rgba(17, 18, 39, 0.94) 0%, rgba(9, 10, 25, 0.98) 100%);
+  --hero-role-border: rgba(150, 123, 255, 0.28);
+  --hero-role-shadow:
+    0 20px 44px rgba(1, 4, 18, 0.48),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  --section-title-gradient: linear-gradient(135deg, #8a5cff 0%, #b48cff 46%, #7bddff 100%);
+  --page-background:
+    radial-gradient(circle at 8% 16%, rgba(104, 52, 215, 0.34) 0%, transparent 22%),
+    radial-gradient(circle at 84% 10%, rgba(129, 79, 255, 0.22) 0%, transparent 20%),
+    radial-gradient(circle at 72% 74%, rgba(68, 37, 184, 0.16) 0%, transparent 24%),
+    linear-gradient(180deg, #060713 0%, #09091b 40%, #05060f 100%);
+  --page-atmosphere:
+    radial-gradient(circle at 50% 0%, rgba(122, 74, 255, 0.12) 0%, transparent 40%),
+    radial-gradient(circle at 20% 78%, rgba(0, 168, 255, 0.08) 0%, transparent 24%),
+    radial-gradient(circle at 88% 34%, rgba(176, 87, 255, 0.12) 0%, transparent 24%);
+  --page-dot-color: rgba(166, 144, 255, 0.62);
+  --page-dot-opacity: 0.46;
+  --screen-shadow-bg: linear-gradient(to top, rgba(1, 3, 14, 0.7) 0%, rgba(1, 3, 14, 0.44) 26%, rgba(1, 3, 14, 0.18) 52%, rgba(1, 3, 14, 0.05) 72%, transparent 100%);
+  --footer-bg: linear-gradient(180deg, rgba(9, 10, 23, 0.96) 0%, rgba(6, 7, 18, 0.99) 100%);
+  --footer-border: rgba(255, 255, 255, 0.08);
+  --footer-text: #d1caef;
+  --theme-toggle-shift: 0rem;
+  --theme-toggle-track: rgba(255, 255, 255, 0.07);
+  --theme-toggle-track-border: rgba(164, 140, 255, 0.18);
+  --theme-toggle-thumb-bg: linear-gradient(135deg, #8a5cff 0%, #6d48f5 100%);
+  --theme-toggle-thumb-shadow: 0 10px 24px rgba(104, 67, 240, 0.42);
+  --whatsapp-border: rgba(37, 211, 102, 0.22);
+  --whatsapp-surface: linear-gradient(180deg, rgba(18, 28, 33, 0.86) 0%, rgba(12, 18, 25, 0.96) 100%);
+  --whatsapp-text: #f7f3ff;
+  --selection-bg: rgba(138, 92, 255, 0.34);
+  --selection-text: #ffffff;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --color-bg: #f5f1ff;
+  --color-surface: rgba(255, 255, 255, 0.82);
+  --color-surface-strong: rgba(255, 255, 255, 0.96);
+  --color-surface-soft: rgba(92, 71, 187, 0.04);
+  --color-surface-contrast: rgba(92, 71, 187, 0.08);
+  --color-text: #19152f;
+  --color-muted: #615d83;
+  --color-subtle: #857fa3;
+  --color-border: rgba(111, 92, 191, 0.14);
+  --color-border-strong: rgba(111, 92, 191, 0.28);
+  --color-accent: #7951f2;
+  --color-accent-soft: #8f6bff;
+  --color-accent-strong: #6035db;
+  --color-accent-alt: #46bfff;
+  --panel-shadow: 0 20px 52px rgba(90, 76, 158, 0.12);
+  --panel-shadow-strong: 0 24px 72px rgba(90, 76, 158, 0.16);
+  --nav-surface: rgba(255, 255, 255, 0.8);
+  --nav-border: rgba(112, 93, 194, 0.14);
+  --nav-shadow:
+    0 16px 34px rgba(95, 76, 169, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  --nav-hover-bg: rgba(121, 81, 242, 0.08);
+  --nav-active-bg: linear-gradient(135deg, #8057fb 0%, #6941f1 100%);
+  --nav-active-text: #ffffff;
+  --button-primary-bg: linear-gradient(135deg, #8159fb 0%, #6a44ef 100%);
+  --button-primary-bg-hover: linear-gradient(135deg, #8f6bff 0%, #7552f7 100%);
+  --button-primary-border: rgba(121, 81, 242, 0.18);
+  --button-primary-text: #ffffff;
+  --button-secondary-bg: rgba(255, 255, 255, 0.72);
+  --button-secondary-bg-hover: rgba(255, 255, 255, 0.92);
+  --button-secondary-border: rgba(111, 92, 191, 0.15);
+  --button-secondary-border-hover: rgba(121, 81, 242, 0.3);
+  --button-secondary-text: #1d1836;
+  --badge-bg: rgba(121, 81, 242, 0.08);
+  --badge-border: rgba(121, 81, 242, 0.16);
+  --badge-text: #5a4788;
+  --badge-hover-bg: linear-gradient(135deg, #6f47f4 0%, #4ab9ff 100%);
+  --badge-hover-border: rgba(96, 53, 219, 0.55);
+  --badge-hover-text: #ffffff;
+  --badge-hover-shadow:
+    0 14px 30px rgba(96, 53, 219, 0.22),
+    0 0 18px rgba(74, 185, 255, 0.18);
+  --surface-card-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.94) 0%, rgba(248, 244, 255, 0.98) 100%);
+  --surface-card-bg-soft: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(245, 240, 255, 0.96) 100%);
+  --project-card-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.92) 0%, rgba(247, 242, 255, 0.98) 100%);
+  --interactive-row-bg: rgba(255, 255, 255, 0.78);
+  --image-frame-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(245, 240, 255, 0.98) 100%);
+  --image-frame-border: rgba(121, 81, 242, 0.16);
+  --image-stage-bg:
+    radial-gradient(circle at 18% 12%, rgba(151, 107, 255, 0.36) 0%, rgba(123, 82, 255, 0.12) 22%, transparent 42%),
+    radial-gradient(circle at 84% 82%, rgba(191, 90, 255, 0.22) 0%, transparent 24%),
+    linear-gradient(160deg, #efe6ff 0%, #fbf8ff 58%, #f0f6ff 100%);
+  --image-frame-shadow:
+    0 22px 54px rgba(95, 76, 169, 0.14),
+    0 0 0 1px rgba(255, 255, 255, 0.9);
+  --hero-role-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.92) 0%, rgba(245, 239, 255, 0.98) 100%);
+  --hero-role-border: rgba(121, 81, 242, 0.18);
+  --hero-role-shadow:
+    0 18px 42px rgba(95, 76, 169, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.92);
+  --section-title-gradient: linear-gradient(135deg, #7045ef 0%, #8d64ff 48%, #4ab9ff 100%);
+  --page-background:
+    radial-gradient(circle at 10% 16%, rgba(143, 106, 255, 0.18) 0%, transparent 24%),
+    radial-gradient(circle at 84% 12%, rgba(123, 82, 255, 0.14) 0%, transparent 22%),
+    radial-gradient(circle at 68% 76%, rgba(74, 185, 255, 0.08) 0%, transparent 22%),
+    linear-gradient(180deg, #f7f3ff 0%, #f3efff 40%, #eef4ff 100%);
+  --page-atmosphere:
+    radial-gradient(circle at 50% 0%, rgba(123, 82, 255, 0.12) 0%, transparent 40%),
+    radial-gradient(circle at 18% 74%, rgba(74, 185, 255, 0.08) 0%, transparent 22%),
+    radial-gradient(circle at 90% 30%, rgba(176, 87, 255, 0.09) 0%, transparent 24%);
+  --page-dot-color: rgba(121, 81, 242, 0.34);
+  --page-dot-opacity: 0.32;
+  --screen-shadow-bg: linear-gradient(to top, rgba(33, 24, 61, 0.22) 0%, rgba(33, 24, 61, 0.14) 24%, rgba(33, 24, 61, 0.06) 48%, rgba(33, 24, 61, 0.02) 70%, transparent 100%);
+  --footer-bg: linear-gradient(180deg, rgba(250, 246, 255, 0.98) 0%, rgba(242, 237, 255, 0.98) 100%);
+  --footer-border: rgba(111, 92, 191, 0.12);
+  --footer-text: #655f86;
+  --theme-toggle-shift: 1.35rem;
+  --theme-toggle-track: rgba(121, 81, 242, 0.1);
+  --theme-toggle-track-border: rgba(121, 81, 242, 0.16);
+  --theme-toggle-thumb-bg: linear-gradient(135deg, #ffffff 0%, #efe8ff 100%);
+  --theme-toggle-thumb-shadow: 0 10px 20px rgba(95, 76, 169, 0.16);
+  --whatsapp-border: rgba(18, 140, 126, 0.18);
+  --whatsapp-surface: linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(241, 248, 246, 0.98) 100%);
+  --whatsapp-text: #1e2a24;
+  --selection-bg: rgba(121, 81, 242, 0.22);
+  --selection-text: #1d1836;
+}
+
+@media (max-width: 640px) {
+  :root {
+    --nav-offset: 5.7rem;
+    --section-shell-top: clamp(6rem, 12svh, 7.5rem);
+    --contact-shell-top: clamp(6.1rem, 12svh, 7.8rem);
+  }
+}
+
+html {
+  scroll-padding-top: calc(var(--nav-offset) + 1rem);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  background-color: var(--color-bg);
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  overflow-x: hidden;
+  background-color: var(--color-bg);
+  background-image: var(--page-background);
+  background-attachment: fixed;
+  color: var(--color-text);
+  font-family:
+    "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+::selection {
+  background: var(--selection-bg);
+  color: var(--selection-text);
+}
+
+a {
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.portfolio-app {
+  position: relative;
+  isolation: isolate;
+}
+
+.page-theme-atmosphere,
+.page-theme-dots {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+.page-theme-atmosphere {
+  z-index: -2;
+  background: var(--page-atmosphere);
+}
+
+.page-theme-dots {
+  z-index: -1;
+  opacity: var(--page-dot-opacity);
+  background-image: radial-gradient(circle, var(--page-dot-color) 0 1.2px, transparent 1.8px);
+  background-size: 78px 78px;
+  mask-image:
+    radial-gradient(circle at 12% 18%, black 0 19%, transparent 28%),
+    radial-gradient(circle at 84% 16%, black 0 18%, transparent 28%),
+    radial-gradient(circle at 18% 76%, black 0 16%, transparent 26%),
+    radial-gradient(circle at 88% 66%, black 0 18%, transparent 28%);
+}
+
+.screen-bottom-shadow {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 38;
+  height: clamp(18rem, 48vh, 34rem);
+  pointer-events: none;
+  background: var(--screen-shadow-bg);
+}
+
+.nav-shell,
+.nav-link-active,
+.theme-toggle,
+.theme-toggle__track,
+.theme-toggle__thumb,
+.button-surface-primary,
+.button-surface-secondary,
+.surface-card,
+.project-card-surface,
+.service-card-surface,
+.interactive-row,
+.image-frame-surface,
+.badge-surface,
+.footer-icon-button,
+.icon-surface-button,
+.glow-icon-box,
+.hero-role-surface,
+.whatsapp-border-sweep,
+.whatsapp-button-surface {
+  transition:
+    background 760ms cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 760ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 760ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 930ms cubic-bezier(0.22, 1, 0.36, 1),
+    color 760ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 930ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 620ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.motion-button {
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+.motion-button:hover,
+.motion-button:focus-visible {
+  transform: translate3d(0, 0, 0) scale(1.05);
+}
+
+.card-lift {
+  transform: translate3d(0, 0, 0);
+}
+
+.card-lift:hover,
+.card-lift:focus-visible {
+  transform: translate3d(0, -0.75rem, 0);
+}
+
+.nav-shell {
+  border: 1px solid var(--nav-border);
+  background: var(--nav-surface);
+  box-shadow: var(--nav-shadow);
+  backdrop-filter: blur(18px);
+}
+
+.nav-link-active {
+  background: var(--nav-active-bg);
+  color: var(--nav-active-text);
+  box-shadow: 0 12px 28px rgba(100, 64, 230, 0.24);
+}
+
+.theme-toggle {
+  align-items: center;
+  gap: 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: 9999px;
+  background: var(--color-surface-soft);
+  padding: 0.34rem 0.42rem 0.34rem 0.72rem;
+  color: var(--color-text);
+  box-shadow: var(--panel-shadow);
+}
+
+.theme-toggle:hover {
+  border-color: var(--color-border-strong);
+  background: var(--color-surface-contrast);
+}
+
+.theme-toggle--compact {
+  gap: 0;
+  padding-right: 0.36rem;
+  padding-left: 0.36rem;
+}
+
+.theme-toggle__track {
+  position: relative;
+  display: inline-flex;
+  width: 2.85rem;
+  height: 1.55rem;
+  align-items: center;
+  border: 1px solid var(--theme-toggle-track-border);
+  border-radius: 9999px;
+  background: var(--theme-toggle-track);
+}
+
+.theme-toggle__thumb {
+  position: absolute;
+  top: 0.13rem;
+  left: 0.13rem;
+  display: inline-flex;
+  height: 1.05rem;
+  width: 1.05rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: var(--theme-toggle-thumb-bg);
+  box-shadow: var(--theme-toggle-thumb-shadow);
+  transform: translateX(var(--theme-toggle-shift));
+}
+
+.theme-toggle__icon {
+  font-size: 0.68rem;
+  color: var(--color-accent-strong);
+}
+
+.theme-toggle__text {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: var(--color-muted);
+}
+
+.theme-toggle:hover .theme-toggle__text {
+  color: var(--color-text);
+}
+
+.button-surface-primary {
+  border: 1px solid var(--button-primary-border);
+  background: var(--button-primary-bg);
+  color: var(--button-primary-text);
+  box-shadow:
+    0 16px 34px rgba(96, 56, 230, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14);
+}
+
+.button-surface-primary:hover,
+.button-surface-primary:focus-visible {
+  background: var(--button-primary-bg-hover);
+}
+
+.button-surface-secondary {
+  border: 1px solid var(--button-secondary-border);
+  background: var(--button-secondary-bg);
+  color: var(--button-secondary-text);
+  box-shadow:
+    0 14px 32px rgba(2, 4, 16, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(14px);
+}
+
+.button-surface-secondary:hover,
+.button-surface-secondary:focus-visible {
+  border-color: var(--button-secondary-border-hover);
+  background: var(--button-secondary-bg-hover);
+}
+
+.surface-card {
+  border: 1px solid var(--color-border);
+  background: var(--surface-card-bg);
+  box-shadow: var(--panel-shadow);
+}
+
+.project-card-surface {
+  border: 1px solid var(--color-border);
+  background: var(--project-card-bg);
+  box-shadow: var(--panel-shadow);
+}
+
+.service-card-surface {
+  border: 1px solid var(--color-border);
+  background: var(--surface-card-bg-soft);
+  box-shadow: var(--panel-shadow);
+}
+
+.interactive-row {
+  border: 1px solid var(--color-border);
+  background: var(--interactive-row-bg);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+.image-frame-surface {
+  border: 1px solid var(--image-frame-border);
+  background: var(--image-frame-bg);
+  box-shadow: var(--image-frame-shadow);
+}
+
+.image-frame-stage {
+  background: var(--image-stage-bg);
+}
+
+.badge-surface {
+  border: 1px solid var(--badge-border);
+  background: var(--badge-bg);
+  color: var(--badge-text);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.skill-card-static:hover,
+.skill-card-static:focus-within {
+  border-color: var(--color-border-strong);
+  box-shadow: var(--panel-shadow-strong);
+}
+
+.skill-badge:hover,
+.skill-badge:focus-visible {
+  border-color: var(--badge-hover-border);
+  background: var(--badge-hover-bg);
+  color: var(--badge-hover-text);
+  box-shadow:
+    var(--badge-hover-shadow),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.footer-icon-button {
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-soft);
+  color: var(--footer-text);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.footer-surface {
+  background: var(--footer-bg);
+}
+
+.footer-icon-button:hover,
+.footer-icon-button:focus-visible {
+  border-color: var(--color-border-strong);
+  background: var(--color-surface-contrast);
+  color: var(--color-text);
+}
+
+.icon-surface-button {
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-soft);
+  color: var(--color-muted);
+  box-shadow: var(--panel-shadow);
+}
+
+.icon-surface-button:hover,
+.icon-surface-button:focus-visible {
+  border-color: var(--color-border-strong);
+  background: var(--color-surface-contrast);
+  color: var(--color-text);
+}
+
+.glow-icon-box {
+  border: 1px solid rgba(149, 123, 255, 0.24);
+  background:
+    radial-gradient(circle at 50% 20%, rgba(179, 131, 255, 0.24) 0%, rgba(125, 79, 255, 0.18) 30%, transparent 70%),
+    linear-gradient(180deg, rgba(72, 48, 145, 0.72) 0%, rgba(28, 21, 67, 0.96) 100%);
+  color: #ffffff;
+  box-shadow:
+    0 14px 32px rgba(63, 33, 165, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+:root[data-theme="light"] .glow-icon-box {
+  background:
+    radial-gradient(circle at 50% 20%, rgba(162, 126, 255, 0.22) 0%, rgba(122, 91, 240, 0.12) 34%, transparent 74%),
+    linear-gradient(180deg, rgba(132, 104, 255, 0.98) 0%, rgba(105, 78, 232, 0.94) 100%);
+}
+
+.hero-role-surface {
+  border: 1px solid var(--hero-role-border);
+  background: var(--hero-role-bg);
+  box-shadow: var(--hero-role-shadow);
+  backdrop-filter: blur(18px);
+}
+
+.portfolio-accent-text {
+  background-image: var(--section-title-gradient);
+  background-size: 220% 220%;
+  background-position: 100% 100%;
+  background-clip: text;
+  color: transparent;
+  -webkit-background-clip: text;
+}
+
+@keyframes hero-name-blink {
+  0%,
+  100% {
+    background-position: 100% 100%;
+  }
+
+  50% {
+    background-position: 0% 0%;
+  }
+}
+
+.whatsapp-border-sweep {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  will-change: transform;
+  transform: translateZ(0) scale(1);
+  border: 1px solid var(--whatsapp-border);
+  background: var(--whatsapp-surface);
+  box-shadow:
+    0 14px 30px rgba(2, 4, 16, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  color: var(--whatsapp-text);
+}
+
+.whatsapp-border-sweep::before {
+  content: "";
+  position: absolute;
+  top: -18%;
+  left: -28%;
+  width: 38%;
+  height: 136%;
+  border-radius: 9999px;
+  background:
+    linear-gradient(
+      115deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.14) 18%,
+      rgba(255, 255, 255, 0.72) 48%,
+      rgba(167, 243, 208, 0.24) 62%,
+      rgba(255, 255, 255, 0) 100%
+    );
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+  filter: blur(4px);
+}
+
+.whatsapp-border-sweep::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background:
+    radial-gradient(circle at 18% 50%, rgba(37, 211, 102, 0.16), transparent 42%),
+    radial-gradient(circle at 84% 50%, rgba(18, 140, 126, 0.14), transparent 36%);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+}
+
+.whatsapp-button-surface {
+  background: transparent;
+  color: inherit;
+}
+
+.whatsapp-icon-shell {
+  background: transparent;
+  color: inherit;
+  box-shadow: none;
+}
+
+.whatsapp-border-sweep:hover,
+.whatsapp-border-sweep:focus-visible {
+  transform: translateZ(0) scale(1.05);
+  border-color: rgba(37, 211, 102, 0.38);
+  box-shadow:
+    0 18px 36px rgba(2, 4, 16, 0.18),
+    0 0 30px rgba(37, 211, 102, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.whatsapp-border-sweep:hover::before,
+.whatsapp-border-sweep:focus-visible::before,
+.whatsapp-border-sweep:hover::after,
+.whatsapp-border-sweep:focus-visible::after {
+  opacity: 1;
+}
+
+.whatsapp-border-sweep:focus-visible {
+  outline: none;
+}
