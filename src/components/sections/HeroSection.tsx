@@ -56,7 +56,7 @@ export function HeroSection() {
 
           {/* Role row — container centered, button anchored left, card fills remaining space */}
           <div className="mt-5 sm:mt-6">
-            <div className="mx-auto flex max-w-sm items-center gap-3 sm:max-w-none sm:gap-4 lg:mx-0">
+            <div className="mx-auto flex w-full max-w-sm items-center gap-3 sm:max-w-none sm:gap-4 lg:mx-0">
               <button
                 type="button"
                 onClick={showNextItem}
@@ -69,11 +69,10 @@ export function HeroSection() {
                 <LuChevronRight className="text-sm sm:text-lg" />
               </button>
 
-              {/* flex-1 min-w-0: card takes all remaining space — button never moves */}
+              {/* Card sizes to content — container w-full keeps button anchored */}
               <div
                 className={cn(
                   roleCardClass,
-                  'flex-1 min-w-0',
                   isMobile
                     ? 'opacity-100'
                     : isVisible ? 'translate-y-0 opacity-100' : 'translate-y-1 opacity-0',
