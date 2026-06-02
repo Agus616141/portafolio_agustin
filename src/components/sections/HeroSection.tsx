@@ -5,6 +5,7 @@ import { cn } from '../../lib/cn'
 import { Button } from '../ui/Button'
 import { HeroVisual } from '../ui/HeroVisual'
 import { SectionShell } from '../ui/SectionShell'
+import { useIsMobile } from '../../hooks/useIsMobile'
 import {
   buttonHoverClass,
   descriptionHoverClass,
@@ -30,6 +31,7 @@ const roleCardClass =
 
 export function HeroSection() {
   const { typedText, isVisible, showNextItem } = useRotatingText(hero.roles)
+  const isMobile = useIsMobile()
 
   return (
     <SectionShell
@@ -66,7 +68,9 @@ export function HeroSection() {
             <div
               className={cn(
                 roleCardClass,
-                isVisible ? 'translate-y-0 opacity-100' : 'translate-y-1 opacity-0',
+                isMobile
+                  ? 'opacity-100'
+                  : isVisible ? 'translate-y-0 opacity-100' : 'translate-y-1 opacity-0',
               )}
             >
               <span className="block whitespace-nowrap font-mono text-[0.92rem] font-semibold tracking-tight text-[var(--color-text)] sm:text-xl md:text-2xl">

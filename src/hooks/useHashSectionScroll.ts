@@ -1,17 +1,15 @@
 import { useEffect } from 'react'
 
 export function scrollToSectionId(sectionId: string) {
-  if (!sectionId) {
-    return
-  }
+  if (!sectionId) return
 
   const section = document.getElementById(sectionId)
-  if (!section) {
-    return
-  }
+  if (!section) return
+
+  const isMobile = window.matchMedia('(hover: none) and (pointer: coarse)').matches
 
   section.scrollIntoView({
-    behavior: 'smooth',
+    behavior: isMobile ? 'instant' : 'smooth',
     block: 'start',
   })
 }
