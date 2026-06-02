@@ -1,4 +1,4 @@
-# Portafolio — Agustin Meza · v1.1.0
+# Portafolio — Agustin Meza · v1.2.0
 
 Portfolio profesional de desarrollo backend. Construido con React 19, Vite 8, TypeScript y Tailwind CSS 4.
 
@@ -158,9 +158,36 @@ Las imágenes PNG originales se mantienen como fuente. Al reemplazarlas, ejecuta
 
 ---
 
-## Optimizaciones de rendimiento (v1.1.0)
+## Optimizaciones de rendimiento
 
-### Imágenes WebP
+### v1.2.0 — Mobile sin Framer Motion + CSS agresivo
+
+**Framer Motion eliminado del árbol en mobile:**
+- `HeroVisual`: dos componentes separados — `HeroVisualStatic` (HTML puro, cero `m.*`) y `HeroVisualAnimated` (desktop). El wrapper elige según `useIsMobile()`
+- `ProjectVisual`: `<img>` directa en mobile, sin `AnimatePresence` ni `m.img`
+- `App`: en mobile no se monta `LazyMotion` → el chunk `motionFeatures.js` nunca se descarga
+
+**CSS mobile (`hover:none + pointer:coarse`):**
+
+| Elemento | Antes | Después |
+|---|---|---|
+| `page-theme-dots` / `atmosphere` / `screen-bottom-shadow` | 3 capas fixed compuestas | `display:none` |
+| Transiciones | 300 ms | `none` — taps instantáneos |
+| `box-shadow` en todos los elementos | Multi-capa | `none` |
+| `backdrop-filter` nav/botones | `blur(12-18px)` | `none` |
+| `glow-icon-box` | Doble radial-gradient | Fondo sólido |
+| `hero-visual-glow` | `blur-3xl` | `display:none` |
+
+**Desktop:**
+- `box-shadow` transition: `930ms → 380ms`
+- Nav `backdrop-filter`: `18px → 12px`
+- `hero-visual-glow`: `will-change: filter` pre-promueve la capa GPU
+
+---
+
+### v1.1.0 — Imágenes WebP + code splitting + lazy loading
+
+**Imágenes WebP:**
 
 | Imagen | PNG original | WebP | Ahorro |
 |---|---|---|---|
@@ -169,26 +196,14 @@ Las imágenes PNG originales se mantienen como fuente. Al reemplazarlas, ejecuta
 | about-dark | 286 KB | 30 KB | -89.5% |
 | about-light | 254 KB | 27 KB | -89.3% |
 
-### Code splitting de Framer Motion
+**Code splitting de Framer Motion:**
 
 | Chunk | Gzip | Cuándo carga |
 |---|---|---|
 | `index.js` (principal) | 95 KB | Inmediato |
-| `motionFeatures.js` | 9 KB | Async, tras primer render |
+| `motionFeatures.js` | 9 KB | Async, desktop only |
 
-El motor de animación de Framer Motion se carga en un chunk separado mediante `LazyMotion` + dynamic import. El JS bloqueante inicial bajó de 115 KB a 95 KB gzip.
-
-### Mobile (`hover:none + pointer:coarse`)
-
-- `backdrop-filter: blur()` eliminado en nav, botones y hero-role
-- Transiciones reducidas de 760–930 ms a 300 ms
-- 3D tilt, float animation y dots del Hero desactivados (`useIsMobile`)
-- `SectionReveal` reemplazado por `<div>` simple (sin Framer Motion)
-- Título iluminado (`hero-name-blink`) conservado
-
-### Lazy loading
-
-- Imágenes de tarjetas de proyectos con `loading="lazy"` + `decoding="async"`
+**Lazy loading:** imágenes de proyectos con `loading="lazy"` + `decoding="async"`
 
 ---
 
