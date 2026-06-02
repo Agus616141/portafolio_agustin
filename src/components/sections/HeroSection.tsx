@@ -1,4 +1,4 @@
-import { LuArrowRight, LuChevronRight, LuDownload, LuGithub, LuInstagram, LuLinkedin } from 'react-icons/lu'
+import { LuArrowRight, LuChevronDown, LuChevronRight, LuDownload, LuGithub, LuInstagram, LuLinkedin } from 'react-icons/lu'
 import { useRotatingText } from '../../hooks/useRotatingText'
 import { contact, hero } from '../../data/site'
 import { cn } from '../../lib/cn'
@@ -6,6 +6,7 @@ import { Button } from '../ui/Button'
 import { HeroVisual } from '../ui/HeroVisual'
 import { SectionShell } from '../ui/SectionShell'
 import { useIsMobile } from '../../hooks/useIsMobile'
+import { scrollToSectionId } from '../../hooks/useHashSectionScroll'
 import {
   buttonHoverClass,
   descriptionHoverClass,
@@ -46,7 +47,6 @@ export function HeroSection() {
         {/* Text column */}
         <div className="mx-auto max-w-2xl lg:mx-0">
 
-          {/* Title — bigger on mobile for impact */}
           <h1 className={`${titleHoverClass} text-center text-4xl font-black leading-[1.04] text-[var(--color-text)] sm:text-4xl md:text-5xl lg:text-left lg:text-6xl`}>
             Hola, soy{' '}
             <span className={nameBlinkClass}>
@@ -54,8 +54,8 @@ export function HeroSection() {
             </span>
           </h1>
 
-          {/* Role row — container centered, button anchored left, card fills remaining space */}
-          <div className="mt-5 sm:mt-6">
+          {/* Role row */}
+          <div className="mt-7 sm:mt-6">
             <div className="mx-auto flex w-full max-w-sm items-center gap-3 sm:max-w-none sm:gap-4 lg:mx-0">
               <button
                 type="button"
@@ -69,7 +69,6 @@ export function HeroSection() {
                 <LuChevronRight className="text-sm sm:text-lg" />
               </button>
 
-              {/* Card sizes to content — container w-full keeps button anchored */}
               <div
                 className={cn(
                   roleCardClass,
@@ -86,11 +85,11 @@ export function HeroSection() {
             </div>
           </div>
 
-          <p className={`${descriptionHoverClass} mt-6 max-w-2xl text-center text-base leading-7 text-[var(--color-muted)] sm:mt-8 sm:text-lg sm:leading-8 md:text-xl lg:text-left`}>
+          <p className={`${descriptionHoverClass} mt-8 max-w-2xl text-center text-base leading-7 text-[var(--color-muted)] sm:mt-8 sm:text-lg sm:leading-8 md:text-xl lg:text-left`}>
             {hero.summary}
           </p>
 
-          <div className="mt-8 flex flex-col items-center gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:items-start sm:gap-4">
+          <div className="mt-10 flex flex-col items-center gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:items-start sm:gap-4">
             <Button
               href="#contact"
               className="w-full justify-center gap-2 px-6 sm:w-auto"
@@ -109,7 +108,7 @@ export function HeroSection() {
             </Button>
           </div>
 
-          <div className="mx-auto mt-8 max-w-lg border-t border-[var(--color-border)] pt-4 sm:mt-14 sm:pt-5 lg:mx-0">
+          <div className="mx-auto mt-10 max-w-lg border-t border-[var(--color-border)] pt-5 sm:mt-14 sm:pt-5 lg:mx-0">
             <p className="text-center text-[11px] font-semibold uppercase tracking-[0.3em] text-[var(--color-muted)] lg:text-left">
               {hero.socialLabel}
             </p>
@@ -131,6 +130,19 @@ export function HeroSection() {
               })}
             </div>
           </div>
+
+          {/* Scroll indicator — mobile only, debajo de los iconos sociales */}
+          <div className="mt-10 flex justify-center lg:hidden">
+            <button
+              type="button"
+              onClick={() => scrollToSectionId('about')}
+              aria-label="Ver sección Sobre mí"
+              className="flex flex-col items-center gap-1.5 text-[var(--color-subtle)] transition-colors hover:text-[var(--color-muted)]"
+            >
+              <LuChevronDown className="animate-bounce text-2xl" />
+            </button>
+          </div>
+
         </div>
 
         {/* Image — hidden on mobile, visible from lg */}
