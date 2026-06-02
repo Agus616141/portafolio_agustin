@@ -132,7 +132,7 @@ export function HeroSection() {
           </div>
 
           {/* Scroll indicator — mobile only, debajo de los iconos sociales */}
-          <div className="mt-10 flex justify-center lg:hidden">
+          <div className="mt-10 flex justify-center lg:justify-start">
             <button
               type="button"
               onClick={() => scrollToSectionId('about')}
