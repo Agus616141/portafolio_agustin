@@ -20,8 +20,8 @@ export const editableContent = {
     primaryButtonLabel: 'Contactame',
     secondaryButtonLabel: 'Descargar CV',
     secondaryButtonHref: '/cv/Agustin_CV.pdf',
-    imageSrc: '/images/hero-dark.png',
-    imageSrcLight: '/images/hero-light.png',
+    imageSrc: '/images/hero-dark.webp',
+    imageSrcLight: '/images/hero-light.webp',
     imageAlt: 'Arquitectura backend abstracta con conexiones de datos',
   },
 
@@ -30,8 +30,8 @@ export const editableContent = {
     name: 'Agustin',
     summary:
       'Estudiante de Ingenieria en Sistemas y desarrollador backend. Me interesa la arquitectura de software, base de datos y el desarrollo de soluciones mantenibles orientadas a proyectos reales.',
-    imageSrc: '/images/about-dark.png',
-    imageSrcLight: '/images/about-light.png',
+    imageSrc: '/images/about-dark.webp',
+    imageSrcLight: '/images/about-light.webp',
     imageAlt: 'Desarrollador trabajando en su setup',
     highlights: [
       {

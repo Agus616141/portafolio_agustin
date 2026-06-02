@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import { motion, type HTMLMotionProps, useReducedMotion } from 'framer-motion'
+import { m, type HTMLMotionProps, useReducedMotion } from 'framer-motion'
 import { cn } from '../../lib/cn'
 import { useIsMobile } from '../../hooks/useIsMobile'
 
@@ -16,13 +16,12 @@ export function SectionReveal({
   const reduceMotion = useReducedMotion()
   const isMobile     = useIsMobile()
 
-  // On mobile or reduced motion: skip animation entirely, render children immediately
   if (reduceMotion || isMobile) {
     return <div className={cn(className)}>{children}</div>
   }
 
   return (
-    <motion.div
+    <m.div
       initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ amount: 0.3, once: true }}
@@ -31,6 +30,6 @@ export function SectionReveal({
       {...props}
     >
       {children}
-    </motion.div>
+    </m.div>
   )
 }

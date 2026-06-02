@@ -1,6 +1,6 @@
 import { projects, projectsSection } from '../../data/site'
 import { LuArrowRight, LuGithub, LuSquareArrowOutUpRight } from 'react-icons/lu'
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, m } from 'framer-motion'
 import { Badge } from '../ui/Badge'
 import { CenteredSectionHeader } from '../ui/CenteredSectionHeader'
 import { SectionShell } from '../ui/SectionShell'
@@ -39,10 +39,12 @@ function ProjectVisual({
       className={`relative isolate h-[182px] overflow-hidden rounded-t-[1.15rem] border-b border-[var(--color-border)] sm:h-[196px] ${bgClass}`}
     >
       <AnimatePresence mode="sync">
-        <motion.img
+        <m.img
           key={currentImage}
           src={currentImage}
           alt={imageAlt}
+          loading="lazy"
+          decoding="async"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}

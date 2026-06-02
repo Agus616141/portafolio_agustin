@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import {
   AnimatePresence,
-  motion,
+  m,
   useMotionValue,
   useReducedMotion,
   useSpring,
@@ -39,14 +39,13 @@ export function HeroVisual({
   const isMobile   = useIsMobile()
   const theme      = useDocumentTheme()
 
-  // Disable all heavy animation on mobile or reduced motion
   const disableMotion = reduced || isMobile
 
   const isLight    = theme === 'light' && Boolean(srcLight)
   const currentSrc = isLight ? (srcLight as string) : src
 
-  const rawX   = useMotionValue(0)
-  const rawY   = useMotionValue(0)
+  const rawX    = useMotionValue(0)
+  const rawY    = useMotionValue(0)
   const rotateY = useTransform(rawX, [-0.5, 0.5], [-9,  9])
   const rotateX = useTransform(rawY, [-0.5, 0.5], [ 6, -6])
   const springY = useSpring(rotateY, { stiffness: 70, damping: 18 })
@@ -54,7 +53,6 @@ export function HeroVisual({
 
   function onMove(e: React.MouseEvent<HTMLDivElement>) {
     if (!wrapperRef.current || frameRef.current) return
-    // Capture values before RAF (synthetic event may be recycled)
     const { clientX, clientY } = e
     frameRef.current = requestAnimationFrame(() => {
       if (!wrapperRef.current) return
@@ -92,7 +90,6 @@ export function HeroVisual({
       className={`relative mx-auto w-full max-w-[300px] sm:max-w-[440px] lg:max-w-[500px] ${className}`}
       style={disableMotion ? undefined : { perspective: '900px' }}
     >
-      {/* Ambient glow */}
       <div
         aria-hidden="true"
         className="hero-visual-glow pointer-events-none absolute inset-[-8%] -z-10 rounded-full blur-3xl"
@@ -103,16 +100,14 @@ export function HeroVisual({
         }}
       />
 
-      {/* 3-D tilt wrapper — disabled on mobile */}
-      <motion.div
+      <m.div
         style={
           disableMotion
             ? {}
             : { rotateX: springX, rotateY: springY, transformStyle: 'preserve-3d' }
         }
       >
-        {/* Float — disabled on mobile */}
-        <motion.div
+        <m.div
           animate={disableMotion ? {} : { y: [0, -11, 0] }}
           transition={{ duration: 3.6, repeat: Infinity, ease: 'easeInOut' }}
         >
@@ -122,7 +117,7 @@ export function HeroVisual({
               style={stageStyle}
             >
               <AnimatePresence mode="sync">
-                <motion.img
+                <m.img
                   key={currentSrc}
                   src={currentSrc}
                   alt={alt}
@@ -138,11 +133,10 @@ export function HeroVisual({
               </AnimatePresence>
             </div>
           </div>
-        </motion.div>
+        </m.div>
 
-        {/* Floating data-node dots — desktop only */}
         {!disableMotion && NODES.map((n, i) => (
-          <motion.span
+          <m.span
             key={i}
             aria-hidden="true"
             animate={{ y: [0, i % 2 === 0 ? -7 : 7, 0], opacity: [0.5, 1, 0.5] }}
@@ -160,7 +154,7 @@ export function HeroVisual({
             }}
           />
         ))}
-      </motion.div>
+      </m.div>
     </div>
   )
 }
