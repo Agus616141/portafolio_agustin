@@ -33,7 +33,7 @@ export function AboutSection() {
         </div>
 
         <div className="order-1 mx-auto max-w-2xl lg:order-2 lg:mx-0">
-          <h2 className={`${titleHoverClass} text-center text-3xl font-black leading-tight text-[var(--color-text)] sm:text-4xl md:text-5xl lg:text-left lg:text-6xl`}>
+          <h2 className={`${titleHoverClass} text-center text-4xl font-black leading-tight text-[var(--color-text)] sm:text-4xl md:text-5xl lg:text-left lg:text-6xl`}>
             Sobre{' '}
             <span className={nameBlinkClass}>
               Mi

@@ -1,11 +1,10 @@
 import { FaWhatsapp } from 'react-icons/fa6'
-import { LuGithub, LuLinkedin, LuMail } from 'react-icons/lu'
+import { LuArrowRight, LuGithub, LuLinkedin, LuMail } from 'react-icons/lu'
 import { contact, contactSection } from '../../data/site'
 import { Button } from '../ui/Button'
 import { CompactSectionShell } from '../ui/CompactSectionShell'
 import { CenteredSectionHeader } from '../ui/CenteredSectionHeader'
 import {
-  interactiveRowClass,
   nameBlinkClass,
   surfaceCardClass,
 } from '../ui/portfolioStyles'
@@ -46,8 +45,31 @@ export function ContactSection() {
       />
 
       <div className="mx-auto grid w-full max-w-4xl justify-center gap-3 px-4 sm:px-0 lg:grid-cols-[1.15fr_0.85fr] lg:items-stretch">
+
+        {/* ── Email card ─────────────────────────────────────────────── */}
         <article className={`${surfaceCardClass} px-4 py-4 sm:px-5`}>
-          <div className="flex items-start gap-2.5">
+
+          {/* Mobile layout: label → icon+email inline → help text centered */}
+          <div className="sm:hidden">
+            <p className="text-center text-xs font-semibold uppercase tracking-[0.18em] text-[var(--color-subtle)]">
+              {contactSection.emailLabel}
+            </p>
+            <div className="mt-3 flex items-center justify-center gap-2">
+              <LuMail className="shrink-0 text-base text-[var(--color-accent-soft)]" />
+              <a
+                href={`mailto:${contact.email}`}
+                className="break-all text-sm font-bold tracking-[-0.02em] text-[var(--color-text)] transition-colors hover:text-[var(--color-accent-soft)]"
+              >
+                {contact.email}
+              </a>
+            </div>
+            <p className="mt-2 text-center text-sm leading-6 text-[var(--color-muted)]">
+              {contactSection.emailHelpText}
+            </p>
+          </div>
+
+          {/* Desktop layout: icon-box left, text column right */}
+          <div className="hidden items-start gap-2.5 sm:flex">
             <div className="glow-icon-box flex h-10 w-10 items-center justify-center rounded-[0.9rem] sm:h-11 sm:w-11 sm:rounded-[0.95rem]">
               <LuMail className="text-base" />
             </div>
@@ -67,6 +89,7 @@ export function ContactSection() {
             </div>
           </div>
 
+          {/* Buttons — same on both */}
           <div className="mt-3 flex flex-col gap-2.5 sm:flex-row sm:flex-wrap sm:gap-4">
             <Button
               href={`mailto:${contact.email}`}
@@ -92,37 +115,49 @@ export function ContactSection() {
           </div>
         </article>
 
+        {/* ── Profiles card ──────────────────────────────────────────── */}
         <article className={`${surfaceCardClass} px-4 py-4 sm:px-5`}>
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--color-subtle)]">
+          <p className="text-center text-xs font-semibold uppercase tracking-[0.18em] text-[var(--color-subtle)] sm:text-left">
             {contactSection.profilesLabel}
           </p>
+
           <div className="mt-2.5 space-y-2">
+            {/* GitHub */}
             <a
               href={contact.github}
               target="_blank"
               rel="noreferrer"
-              className={interactiveRowClass}
+              className="interactive-row flex flex-row items-center justify-between gap-2 rounded-[0.9rem] px-3.5 py-3"
             >
               <span className="inline-flex items-center gap-3 text-base text-[var(--color-text)]">
-                <LuGithub className="text-base" />
+                <LuGithub className="shrink-0 text-base" />
                 {contactSection.githubLabel}
               </span>
-              <span className="text-sm font-medium text-[var(--color-muted)]">{contactSection.githubCta}</span>
+              <span className="inline-flex items-center gap-1 text-sm font-medium text-[var(--color-muted)]">
+                {contactSection.githubCta}
+                <LuArrowRight className="text-xs" />
+              </span>
             </a>
+
+            {/* LinkedIn */}
             <a
               href={contact.linkedin}
               target="_blank"
               rel="noreferrer"
-              className={interactiveRowClass}
+              className="interactive-row flex flex-row items-center justify-between gap-2 rounded-[0.9rem] px-3.5 py-3"
             >
               <span className="inline-flex items-center gap-3 text-base text-[var(--color-text)]">
-                <LuLinkedin className="text-base" />
+                <LuLinkedin className="shrink-0 text-base" />
                 {contactSection.linkedinLabel}
               </span>
-              <span className="text-sm font-medium text-[var(--color-muted)]">{contactSection.linkedinCta}</span>
+              <span className="inline-flex items-center gap-1 text-sm font-medium text-[var(--color-muted)]">
+                {contactSection.linkedinCta}
+                <LuArrowRight className="text-xs" />
+              </span>
             </a>
           </div>
         </article>
+
       </div>
     </CompactSectionShell>
   )

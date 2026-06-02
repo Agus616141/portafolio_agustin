@@ -45,38 +45,45 @@ export function HeroSection() {
       <div className="grid w-full gap-8 md:gap-12 lg:grid-cols-[1fr_0.98fr] lg:items-center lg:gap-16">
         {/* Text column */}
         <div className="mx-auto max-w-2xl lg:mx-0">
-          <h1 className={`${titleHoverClass} text-center text-3xl font-black leading-[1.04] text-[var(--color-text)] sm:text-4xl md:text-5xl lg:text-left lg:text-6xl`}>
+
+          {/* Title — bigger on mobile for impact */}
+          <h1 className={`${titleHoverClass} text-center text-4xl font-black leading-[1.04] text-[var(--color-text)] sm:text-4xl md:text-5xl lg:text-left lg:text-6xl`}>
             Hola, soy{' '}
             <span className={nameBlinkClass}>
               {hero.name}
             </span>
           </h1>
 
-          <div className="mt-5 flex w-full max-w-full items-center justify-center gap-2.5 sm:mt-6 sm:gap-4 lg:justify-start">
-            <button
-              type="button"
-              onClick={showNextItem}
-              aria-label="Mostrar siguiente rol"
-              className={cn(
-                'icon-surface-button inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full sm:h-10 sm:w-10',
-                buttonHoverClass,
-              )}
-            >
-              <LuChevronRight className="text-sm sm:text-lg" />
-            </button>
+          {/* Role row — container centered, button anchored left, card fills remaining space */}
+          <div className="mt-5 sm:mt-6">
+            <div className="mx-auto flex max-w-sm items-center gap-3 sm:max-w-none sm:gap-4 lg:mx-0">
+              <button
+                type="button"
+                onClick={showNextItem}
+                aria-label="Mostrar siguiente rol"
+                className={cn(
+                  'icon-surface-button inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full sm:h-10 sm:w-10',
+                  buttonHoverClass,
+                )}
+              >
+                <LuChevronRight className="text-sm sm:text-lg" />
+              </button>
 
-            <div
-              className={cn(
-                roleCardClass,
-                isMobile
-                  ? 'opacity-100'
-                  : isVisible ? 'translate-y-0 opacity-100' : 'translate-y-1 opacity-0',
-              )}
-            >
-              <span className="block whitespace-nowrap font-mono text-[0.92rem] font-semibold tracking-tight text-[var(--color-text)] sm:text-xl md:text-2xl">
-                {typedText}
-              </span>
-              <span className="ml-1.5 h-6 w-1 shrink-0 animate-pulse rounded-full bg-[var(--color-accent-alt)] sm:h-7" />
+              {/* flex-1 min-w-0: card takes all remaining space — button never moves */}
+              <div
+                className={cn(
+                  roleCardClass,
+                  'flex-1 min-w-0',
+                  isMobile
+                    ? 'opacity-100'
+                    : isVisible ? 'translate-y-0 opacity-100' : 'translate-y-1 opacity-0',
+                )}
+              >
+                <span className="block overflow-hidden text-ellipsis whitespace-nowrap font-mono text-[0.92rem] font-semibold tracking-tight text-[var(--color-text)] sm:text-xl md:text-2xl">
+                  {typedText}
+                </span>
+                <span className="ml-1.5 h-6 w-1 shrink-0 animate-pulse rounded-full bg-[var(--color-accent-alt)] sm:h-7" />
+              </div>
             </div>
           </div>
 
