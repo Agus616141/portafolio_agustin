@@ -5,6 +5,7 @@ import { Badge } from '../ui/Badge'
 import { CenteredSectionHeader } from '../ui/CenteredSectionHeader'
 import { SectionShell } from '../ui/SectionShell'
 import { useDocumentTheme } from '../../hooks/useDocumentTheme'
+import { useIsMobile } from '../../hooks/useIsMobile'
 import { cardLiftClass, nameBlinkClass } from '../ui/portfolioStyles'
 
 type ProjectVisualProps = {
@@ -27,38 +28,48 @@ function ProjectVisual({
   imageAlt,
   visual,
 }: ProjectVisualProps) {
-  const theme = useDocumentTheme()
+  const theme        = useDocumentTheme()
+  const isMobile     = useIsMobile()
   const currentImage = theme === 'light' && imageLight ? imageLight : image
-  const bgClass = theme === 'light' && visual.gradientClassNameLight
+  const bgClass      = theme === 'light' && visual.gradientClassNameLight
     ? visual.gradientClassNameLight
     : visual.gradientClassName
-  const imgFit = visual.imgFit ?? 'cover'
+  const imgFit       = visual.imgFit ?? 'cover'
+  const imgClass     = `absolute inset-0 h-full w-full ${imgFit === 'contain' ? 'object-contain p-4' : 'object-cover'}`
 
   return (
     <div
       className={`relative isolate h-[182px] overflow-hidden rounded-t-[1.15rem] border-b border-[var(--color-border)] sm:h-[196px] ${bgClass}`}
     >
-      <AnimatePresence mode="sync">
-        <m.img
-          key={currentImage}
+      {isMobile ? (
+        /* Mobile: plain <img>, zero Framer Motion */
+        <img
           src={currentImage}
           alt={imageAlt}
           loading="lazy"
           decoding="async"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.37, ease: 'easeInOut' }}
-          className={`absolute inset-0 h-full w-full transition-transform duration-[930ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06] ${imgFit === 'contain' ? 'object-contain p-4' : 'object-cover'}`}
+          className={imgClass}
         />
-      </AnimatePresence>
+      ) : (
+        /* Desktop: animated fade on theme switch */
+        <AnimatePresence mode="sync">
+          <m.img
+            key={currentImage}
+            src={currentImage}
+            alt={imageAlt}
+            loading="lazy"
+            decoding="async"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.37, ease: 'easeInOut' }}
+            className={`${imgClass} transition-transform duration-[930ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]`}
+          />
+        </AnimatePresence>
+      )}
 
-      <div
-        className={`absolute top-4 left-5 h-7 w-7 rotate-45 rounded-[0.8rem] opacity-95 blur-[1px] ${visual.accentClassName}`}
-      />
-      <div
-        className={`absolute right-5 bottom-5 h-5 w-5 rotate-12 rounded-[0.7rem] opacity-95 ${visual.accentSecondaryClassName}`}
-      />
+      <div className={`absolute top-4 left-5 h-7 w-7 rotate-45 rounded-[0.8rem] opacity-95 blur-[1px] ${visual.accentClassName}`} />
+      <div className={`absolute right-5 bottom-5 h-5 w-5 rotate-12 rounded-[0.7rem] opacity-95 ${visual.accentSecondaryClassName}`} />
 
       {visual.showChart ? (
         <div className="absolute top-4 left-4 rounded-xl border border-cyan-300/35 bg-cyan-300/10 p-2.5 shadow-[0_0_24px_rgba(34,211,238,0.18)]">
@@ -72,7 +83,6 @@ function ProjectVisual({
           </div>
         </div>
       ) : null}
-
     </div>
   )
 }
@@ -91,9 +101,7 @@ export function ProjectsSection() {
             <>
               {projectsLead}{' '}
               {projectsAccent ? (
-                <span className={nameBlinkClass}>
-                  {projectsAccent}
-                </span>
+                <span className={nameBlinkClass}>{projectsAccent}</span>
               ) : null}
             </>
           }
@@ -103,8 +111,7 @@ export function ProjectsSection() {
     >
       <div className="grid w-full grid-cols-[repeat(auto-fit,minmax(min(100%,280px),360px))] justify-center gap-5 sm:gap-6">
         {projects.map((project) => {
-          const LinkIcon =
-            project.ctaType === 'github' ? LuGithub : LuSquareArrowOutUpRight
+          const LinkIcon = project.ctaType === 'github' ? LuGithub : LuSquareArrowOutUpRight
           const href = project.href as string
           const isPlaceholderLink = href === '#'
           const isExternalLink = /^https?:\/\//.test(href)

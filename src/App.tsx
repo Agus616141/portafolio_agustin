@@ -8,31 +8,32 @@ import { HeroSection } from './components/sections/HeroSection'
 import { ProjectsSection } from './components/sections/ProjectsSection'
 import { ServicesSection } from './components/sections/ServicesSection'
 import { useHashSectionScroll } from './hooks/useHashSectionScroll'
+import { useIsMobile } from './hooks/useIsMobile'
 import { useTheme } from './hooks/useTheme'
 
-// Loaded async → excluded from initial bundle (~14KB gzip saved)
+// Loaded async on desktop only — never downloaded on mobile
 const loadFeatures = () => import('./lib/motionFeatures').then(mod => mod.default)
 
 function App() {
   useHashSectionScroll()
   const { theme, toggleTheme } = useTheme()
+  const isMobile = useIsMobile()
   const [overlayKey, setOverlayKey] = useState(0)
   const toggleRef = useRef(toggleTheme)
   toggleRef.current = toggleTheme
 
   const handleToggleTheme = useCallback(() => {
     setOverlayKey((k) => k + 1)
-    // Apply theme at the peak of the overlay (180ms in)
     setTimeout(() => toggleRef.current(), 180)
   }, [])
 
-  return (
-    <LazyMotion features={loadFeatures} strict>
-      <div className="portfolio-app min-h-svh text-[var(--color-text)]">
-        <div aria-hidden="true" className="page-theme-atmosphere" />
-        <div aria-hidden="true" className="page-theme-dots" />
+  const shell = (
+    <div className="portfolio-app min-h-svh text-[var(--color-text)]">
+      <div aria-hidden="true" className="page-theme-atmosphere" />
+      <div aria-hidden="true" className="page-theme-dots" />
 
-        {/* Theme transition overlay — covers the harsh background flash */}
+      {/* Theme transition overlay — desktop only, requires LazyMotion context */}
+      {!isMobile && (
         <AnimatePresence>
           <m.div
             key={overlayKey}
@@ -44,20 +45,29 @@ function App() {
             style={{ background: 'rgba(50, 35, 110, 0.6)' }}
           />
         </AnimatePresence>
+      )}
 
-        <Navbar theme={theme} onToggleTheme={handleToggleTheme} />
-        <div aria-hidden="true" className="screen-bottom-shadow" />
-        <main className="relative z-[1]">
-          <HeroSection />
-          <AboutSection />
-          <ProjectsSection />
-          <ServicesSection />
-          <div className="flex flex-col lg:min-h-svh">
-            <ContactSection />
-            <Footer />
-          </div>
-        </main>
-      </div>
+      <Navbar theme={theme} onToggleTheme={handleToggleTheme} />
+      <div aria-hidden="true" className="screen-bottom-shadow" />
+      <main className="relative z-[1]">
+        <HeroSection />
+        <AboutSection />
+        <ProjectsSection />
+        <ServicesSection />
+        <div className="flex flex-col lg:min-h-svh">
+          <ContactSection />
+          <Footer />
+        </div>
+      </main>
+    </div>
+  )
+
+  // Mobile: no LazyMotion provider → motionFeatures chunk never downloads
+  if (isMobile) return shell
+
+  return (
+    <LazyMotion features={loadFeatures} strict>
+      {shell}
     </LazyMotion>
   )
 }

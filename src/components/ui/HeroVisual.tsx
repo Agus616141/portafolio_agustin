@@ -25,21 +25,47 @@ const NODES = [
   { top: '38%',    right: '-1.6rem', size: '0.35rem', color: 'var(--color-accent-soft)',delay: 1.7, dur: 4.0 },
 ]
 
-export function HeroVisual({
-  src,
-  srcLight,
-  alt,
-  className = '',
-  loading = 'eager',
-  fetchPriority = 'high',
+// ── Static version: zero Framer Motion, rendered on mobile ──────────────────
+function HeroVisualStatic({
+  src, srcLight, alt, loading = 'eager', fetchPriority = 'high',
+}: HeroVisualProps) {
+  const theme    = useDocumentTheme()
+  const isLight  = theme === 'light' && Boolean(srcLight)
+  const currentSrc = isLight ? (srcLight as string) : src
+
+  const stageStyle = isLight
+    ? { background: 'linear-gradient(160deg,#f0eaff 0%,#fafafe 55%,#eef4ff 100%)' }
+    : { background: 'linear-gradient(160deg,#1d1443 0%,#0d1029 56%,#090b1d 100%)' }
+
+  return (
+    <div className="relative mx-auto w-full max-w-[300px] sm:max-w-[440px] lg:max-w-[500px]">
+      <div className="image-frame-surface rounded-[1.35rem] p-2 sm:rounded-[1.75rem] sm:p-2.5">
+        <div
+          className="relative aspect-[0.9/1.06] overflow-hidden rounded-[1.1rem] sm:rounded-[1.35rem]"
+          style={stageStyle}
+        >
+          <img
+            src={currentSrc}
+            alt={alt}
+            loading={loading}
+            fetchPriority={fetchPriority}
+            decoding="async"
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// ── Animated version: full 3D tilt + float + dots, desktop only ─────────────
+function HeroVisualAnimated({
+  src, srcLight, alt, className = '', loading = 'eager', fetchPriority = 'high',
 }: HeroVisualProps) {
   const wrapperRef = useRef<HTMLDivElement>(null)
   const frameRef   = useRef<number>(0)
   const reduced    = useReducedMotion()
-  const isMobile   = useIsMobile()
   const theme      = useDocumentTheme()
-
-  const disableMotion = reduced || isMobile
 
   const isLight    = theme === 'light' && Boolean(srcLight)
   const currentSrc = isLight ? (srcLight as string) : src
@@ -64,31 +90,22 @@ export function HeroVisual({
   }
 
   function onLeave() {
-    if (frameRef.current) {
-      cancelAnimationFrame(frameRef.current)
-      frameRef.current = 0
-    }
+    if (frameRef.current) { cancelAnimationFrame(frameRef.current); frameRef.current = 0 }
     rawX.set(0)
     rawY.set(0)
   }
 
   const stageStyle = isLight
-    ? {
-        background: 'linear-gradient(160deg,#f0eaff 0%,#fafafe 55%,#eef4ff 100%)',
-        boxShadow: 'inset 0 0 40px rgba(140,100,255,0.08)',
-      }
-    : {
-        background: 'linear-gradient(160deg,#1d1443 0%,#0d1029 56%,#090b1d 100%)',
-        boxShadow: 'inset 0 0 48px rgba(100,55,210,0.18)',
-      }
+    ? { background: 'linear-gradient(160deg,#f0eaff 0%,#fafafe 55%,#eef4ff 100%)', boxShadow: 'inset 0 0 40px rgba(140,100,255,0.08)' }
+    : { background: 'linear-gradient(160deg,#1d1443 0%,#0d1029 56%,#090b1d 100%)', boxShadow: 'inset 0 0 48px rgba(100,55,210,0.18)' }
 
   return (
     <div
       ref={wrapperRef}
-      onMouseMove={disableMotion ? undefined : onMove}
-      onMouseLeave={disableMotion ? undefined : onLeave}
+      onMouseMove={reduced ? undefined : onMove}
+      onMouseLeave={reduced ? undefined : onLeave}
       className={`relative mx-auto w-full max-w-[300px] sm:max-w-[440px] lg:max-w-[500px] ${className}`}
-      style={disableMotion ? undefined : { perspective: '900px' }}
+      style={reduced ? undefined : { perspective: '900px' }}
     >
       <div
         aria-hidden="true"
@@ -99,23 +116,13 @@ export function HeroVisual({
             : 'radial-gradient(circle at 50% 55%,rgba(139,92,255,0.52) 0%,rgba(121,220,255,0.22) 55%,transparent 80%)',
         }}
       />
-
-      <m.div
-        style={
-          disableMotion
-            ? {}
-            : { rotateX: springX, rotateY: springY, transformStyle: 'preserve-3d' }
-        }
-      >
+      <m.div style={reduced ? {} : { rotateX: springX, rotateY: springY, transformStyle: 'preserve-3d' }}>
         <m.div
-          animate={disableMotion ? {} : { y: [0, -11, 0] }}
+          animate={reduced ? {} : { y: [0, -11, 0] }}
           transition={{ duration: 3.6, repeat: Infinity, ease: 'easeInOut' }}
         >
           <div className="image-frame-surface card-lift rounded-[1.35rem] p-2 sm:rounded-[1.75rem] sm:p-2.5">
-            <div
-              className="relative aspect-[0.9/1.06] overflow-hidden rounded-[1.1rem] sm:rounded-[1.35rem]"
-              style={stageStyle}
-            >
+            <div className="relative aspect-[0.9/1.06] overflow-hidden rounded-[1.1rem] sm:rounded-[1.35rem]" style={stageStyle}>
               <AnimatePresence mode="sync">
                 <m.img
                   key={currentSrc}
@@ -124,9 +131,9 @@ export function HeroVisual({
                   loading={loading}
                   fetchPriority={fetchPriority}
                   decoding="async"
-                  initial={disableMotion ? false : { opacity: 0 }}
+                  initial={reduced ? false : { opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  exit={disableMotion ? undefined : { opacity: 0 }}
+                  exit={reduced ? undefined : { opacity: 0 }}
                   transition={{ duration: 0.37, ease: 'easeInOut' }}
                   className="absolute inset-0 h-full w-full object-cover"
                 />
@@ -134,8 +141,7 @@ export function HeroVisual({
             </div>
           </div>
         </m.div>
-
-        {!disableMotion && NODES.map((n, i) => (
+        {!reduced && NODES.map((n, i) => (
           <m.span
             key={i}
             aria-hidden="true"
@@ -143,18 +149,20 @@ export function HeroVisual({
             transition={{ duration: n.dur, repeat: Infinity, ease: 'easeInOut', delay: n.delay }}
             className="pointer-events-none absolute rounded-full"
             style={{
-              top:    n.top    ?? undefined,
-              bottom: n.bottom ?? undefined,
-              left:   n.left   ?? undefined,
-              right:  n.right  ?? undefined,
-              width:  n.size,
-              height: n.size,
-              background: n.color,
-              boxShadow: `0 0 8px 2px ${n.color}`,
+              top: n.top ?? undefined, bottom: n.bottom ?? undefined,
+              left: n.left ?? undefined, right: n.right ?? undefined,
+              width: n.size, height: n.size,
+              background: n.color, boxShadow: `0 0 8px 2px ${n.color}`,
             }}
           />
         ))}
       </m.div>
     </div>
   )
+}
+
+// ── Public export: picks the right version automatically ─────────────────────
+export function HeroVisual(props: HeroVisualProps) {
+  const isMobile = useIsMobile()
+  return isMobile ? <HeroVisualStatic {...props} /> : <HeroVisualAnimated {...props} />
 }
