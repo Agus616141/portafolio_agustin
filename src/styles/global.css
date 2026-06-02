@@ -652,12 +652,12 @@ a {
   /* background-attachment:fixed rompe el scroll GPU en mobile — fix crítico */
   body {
     background-attachment: scroll;
-    /* Sincronizar con los componentes: misma duración para tema suave y consistente */
-    transition: background-color 200ms ease, color 200ms ease;
+    transition: none;
   }
 
+  /* Cambio de tema instantáneo en mobile — sin delay ni transiciones */
   html {
-    transition: background-color 200ms ease;
+    transition: none;
   }
 
   /* Hero section: usar 100svh completo para que no se vea la sección siguiente.
@@ -674,8 +674,7 @@ a {
     display: none;
   }
 
-  /* Transición corta solo para cambio de tema — sin transform ni box-shadow
-     para no desperdiciar GPU durante scroll e interacciones táctiles */
+  /* Sin transiciones en mobile — cambio de tema instantáneo */
   .nav-shell,
   .nav-link-active,
   .theme-toggle,
@@ -697,11 +696,7 @@ a {
   .whatsapp-button-surface,
   .motion-button,
   .card-lift {
-    transition:
-      background-color 200ms ease,
-      background     200ms ease,
-      color          200ms ease,
-      border-color   150ms ease;
+    transition: none;
   }
 
   /* Sin box-shadow — evita repaint de capa en cada interacción */

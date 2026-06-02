@@ -1,4 +1,4 @@
-# Portafolio — Agustin Meza · v1.2.0
+# Portafolio — Agustin Meza · v1.3.0
 
 Portfolio profesional de desarrollo backend. Construido con React 19, Vite 8, TypeScript y Tailwind CSS 4.
 
@@ -155,6 +155,37 @@ Cada imagen del sitio tiene versión oscura y clara. El cambio se anima con Fram
 | HaskHelp | `project-haskhelp-dark.svg` | `project-haskhelp-light.svg` |
 
 Las imágenes PNG originales se mantienen como fuente. Al reemplazarlas, ejecutar `node scripts/convert-to-webp.mjs` para regenerar los WebP.
+
+---
+
+## Historial de versiones
+
+### v1.3.0 — UX mobile completa + fix parpadeo inicial
+
+**Fix parpadeo en carga inicial:**
+- `index.html`: el inline script ahora fija `backgroundColor` en `<html>` antes de que cargue el CSS, evitando el fade blanco→oscuro del `transition: background-color`
+- `App.tsx`: el overlay de transición de tema ya no anima en el primer render (`overlayKey > 0`), eliminando el flash morado inicial
+
+**Navbar:**
+- Indicador activo salta directo al destino al hacer click — ya no recorre todas las secciones intermedias (efecto semáforo eliminado)
+- Centrado en mobile (`justify-center`), separado en desktop (`md:justify-between`)
+
+**Hero — mobile:**
+- Título `text-4xl` (era `text-3xl`)
+- Role card: ancho natural según el texto, botón siempre fijo a la izquierda
+- Texto, rol, descripción, botones y redes: centrados en mobile, izquierda en desktop (`lg:text-left`)
+- Imágenes Hero y About: ocultas en mobile (`hidden lg:block`)
+- Scroll instantáneo al navegar desde navbar o botones (sin animación suave)
+- Sección Hero: `min-height: 100svh` en mobile — la siguiente sección ya no se cuela por debajo
+- Espaciado entre elementos aumentado para llenar mejor la pantalla
+- Flecha animada (`↓`) debajo de redes sociales: mobile centrada, desktop más grande y centrada bajo el grid
+
+**Contact — mobile:**
+- Email card: "Email principal" como título, ícono + email en una línea, texto de ayuda centrado
+- Profiles card: etiqueta centrada, filas siempre en una línea (ícono + nombre + CTA)
+
+**Tema en mobile:**
+- `transition: none` en `html`, `body` y todos los componentes → cambio de tema instantáneo sin delay
 
 ---
 

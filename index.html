@@ -15,8 +15,12 @@
         const storedTheme = window.localStorage.getItem(storageKey)
         const theme = storedTheme === 'light' ? 'light' : 'dark'
         const themeColor = theme === 'light' ? '#f6f1ff' : '#090813'
+        // Fijar el background antes de que cargue el CSS para evitar el
+        // flash/parpadeo que produce la transition: background-color al inicio
+        const bg = theme === 'light' ? '#ffffff' : '#070816'
 
         document.documentElement.dataset.theme = theme
+        document.documentElement.style.backgroundColor = bg
         document
           .querySelector('meta[name="theme-color"]')
           ?.setAttribute('content', themeColor)

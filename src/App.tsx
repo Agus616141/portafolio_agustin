@@ -32,8 +32,9 @@ function App() {
       <div aria-hidden="true" className="page-theme-atmosphere" />
       <div aria-hidden="true" className="page-theme-dots" />
 
-      {/* Theme transition overlay — desktop only, requires LazyMotion context */}
-      {!isMobile && (
+      {/* Theme transition overlay — solo desktop, solo después del primer toggle.
+          overlayKey=0 en el primer render: no animar en el mount inicial. */}
+      {!isMobile && overlayKey > 0 && (
         <AnimatePresence>
           <m.div
             key={overlayKey}
