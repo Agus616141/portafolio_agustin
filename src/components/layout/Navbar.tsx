@@ -120,7 +120,7 @@ export function Navbar({ theme, onToggleTheme }: NavbarProps) {
       className="fixed top-0 right-0 left-0 z-20 px-3 pt-[max(0.75rem,env(safe-area-inset-top))] pb-3 sm:px-4 sm:pt-[max(1rem,env(safe-area-inset-top))] sm:pb-4 md:px-6"
     >
       <div className="mx-auto flex max-w-6xl justify-center">
-        <div className="nav-shell flex w-full max-w-full items-center justify-between gap-2 rounded-full px-2 py-2 sm:w-auto sm:max-w-fit sm:px-3 sm:py-3">
+        <div className="nav-shell flex w-full max-w-full items-center justify-center gap-2 rounded-full px-2 py-2 sm:w-auto sm:max-w-fit sm:px-3 sm:py-3 md:justify-between">
           <NavigationLinks
             activeSection={activeSection}
             ariaLabel="Navegacion principal"

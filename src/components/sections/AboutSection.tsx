@@ -21,27 +21,29 @@ export function AboutSection() {
       maxWidthClassName="max-w-[1120px]"
     >
       <div className="grid w-full gap-8 md:gap-12 lg:grid-cols-[0.98fr_1fr] lg:items-center lg:gap-16">
-        <HeroVisual
-          src={aboutProfile.imageSrc}
-          srcLight={aboutProfile.imageSrcLight}
-          alt={aboutProfile.imageAlt}
-          className="order-2 lg:order-1"
-          loading="lazy"
-          fetchPriority="low"
-        />
+        {/* Image — hidden on mobile, visible from lg */}
+        <div className="hidden lg:block lg:order-1">
+          <HeroVisual
+            src={aboutProfile.imageSrc}
+            srcLight={aboutProfile.imageSrcLight}
+            alt={aboutProfile.imageAlt}
+            loading="lazy"
+            fetchPriority="low"
+          />
+        </div>
 
-        <div className="order-1 max-w-2xl lg:order-2">
-          <h2 className={`${titleHoverClass} text-3xl font-black leading-tight text-[var(--color-text)] sm:text-4xl md:text-5xl lg:text-6xl`}>
+        <div className="order-1 mx-auto max-w-2xl lg:order-2 lg:mx-0">
+          <h2 className={`${titleHoverClass} text-center text-3xl font-black leading-tight text-[var(--color-text)] sm:text-4xl md:text-5xl lg:text-left lg:text-6xl`}>
             Sobre{' '}
             <span className={nameBlinkClass}>
               Mi
             </span>
           </h2>
           <div className={`${descriptionHoverClass} mt-5 max-w-xl sm:mt-6`}>
-            <p className="text-2xl font-bold text-[var(--color-text)]">
+            <p className="text-center text-2xl font-bold text-[var(--color-text)] lg:text-left">
               {aboutProfile.name}
             </p>
-            <p className="mt-4 text-base leading-7 text-[var(--color-muted)] md:text-lg md:leading-8">
+            <p className="mt-4 text-center text-base leading-7 text-[var(--color-muted)] md:text-lg md:leading-8 lg:text-left">
               {aboutProfile.summary}
             </p>
           </div>

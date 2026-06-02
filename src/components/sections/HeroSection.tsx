@@ -41,15 +41,16 @@ export function HeroSection() {
       maxWidthClassName="max-w-[1120px]"
     >
       <div className="grid w-full gap-8 md:gap-12 lg:grid-cols-[1fr_0.98fr] lg:items-center lg:gap-16">
-        <div className="max-w-2xl">
-          <h1 className={`${titleHoverClass} text-3xl font-black leading-[1.04] text-[var(--color-text)] sm:text-4xl md:text-5xl lg:text-6xl`}>
+        {/* Text column */}
+        <div className="mx-auto max-w-2xl lg:mx-0">
+          <h1 className={`${titleHoverClass} text-center text-3xl font-black leading-[1.04] text-[var(--color-text)] sm:text-4xl md:text-5xl lg:text-left lg:text-6xl`}>
             Hola, soy{' '}
             <span className={nameBlinkClass}>
               {hero.name}
             </span>
           </h1>
 
-          <div className="mt-5 flex w-full max-w-full items-center gap-2.5 sm:mt-6 sm:gap-4">
+          <div className="mt-5 flex w-full max-w-full items-center justify-center gap-2.5 sm:mt-6 sm:gap-4 lg:justify-start">
             <button
               type="button"
               onClick={showNextItem}
@@ -75,11 +76,11 @@ export function HeroSection() {
             </div>
           </div>
 
-          <p className={`${descriptionHoverClass} mt-6 max-w-2xl text-base leading-7 text-[var(--color-muted)] sm:mt-8 sm:text-lg sm:leading-8 md:text-xl`}>
+          <p className={`${descriptionHoverClass} mt-6 max-w-2xl text-center text-base leading-7 text-[var(--color-muted)] sm:mt-8 sm:text-lg sm:leading-8 md:text-xl lg:text-left`}>
             {hero.summary}
           </p>
 
-          <div className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:gap-4">
+          <div className="mt-8 flex flex-col items-center gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:items-start sm:gap-4">
             <Button
               href="#contact"
               className="w-full justify-center gap-2 px-6 sm:w-auto"
@@ -98,14 +99,13 @@ export function HeroSection() {
             </Button>
           </div>
 
-          <div className="mt-8 max-w-lg border-t border-[var(--color-border)] pt-4 sm:mt-14 sm:pt-5">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-[var(--color-muted)]">
+          <div className="mx-auto mt-8 max-w-lg border-t border-[var(--color-border)] pt-4 sm:mt-14 sm:pt-5 lg:mx-0">
+            <p className="text-center text-[11px] font-semibold uppercase tracking-[0.3em] text-[var(--color-muted)] lg:text-left">
               {hero.socialLabel}
             </p>
-            <div className="mt-4 flex flex-wrap items-center gap-4 text-xl text-[var(--color-muted)]">
+            <div className="mt-4 flex flex-wrap items-center justify-center gap-4 text-xl text-[var(--color-muted)] lg:justify-start">
               {socialLinks.map((link) => {
                 const Icon = socialIcons[link.label]
-
                 return (
                   <a
                     key={link.label}
@@ -123,11 +123,14 @@ export function HeroSection() {
           </div>
         </div>
 
-        <HeroVisual
-          src={hero.imageSrc}
-          srcLight={hero.imageSrcLight}
-          alt={hero.imageAlt}
-        />
+        {/* Image — hidden on mobile, visible from lg */}
+        <div className="hidden lg:block">
+          <HeroVisual
+            src={hero.imageSrc}
+            srcLight={hero.imageSrcLight}
+            alt={hero.imageAlt}
+          />
+        </div>
       </div>
     </SectionShell>
   )

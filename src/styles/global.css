@@ -649,6 +649,11 @@ a {
 
 /* ─── Mobile: eliminar toda la capa de Framer Motion y CSS costoso ───────── */
 @media (hover: none) and (pointer: coarse) {
+  /* background-attachment:fixed rompe el scroll GPU en mobile — fix crítico */
+  body {
+    background-attachment: scroll;
+  }
+
   /* Ocultar capas decorativas fixed — costosas de componer en scroll */
   .page-theme-dots,
   .page-theme-atmosphere,
