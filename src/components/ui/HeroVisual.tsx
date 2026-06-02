@@ -8,6 +8,7 @@ import {
   useTransform,
 } from 'framer-motion'
 import { useDocumentTheme } from '../../hooks/useDocumentTheme'
+import { useIsMobile } from '../../hooks/useIsMobile'
 
 type HeroVisualProps = {
   src: string
@@ -17,7 +18,6 @@ type HeroVisualProps = {
   loading?: 'eager' | 'lazy'
   fetchPriority?: 'high' | 'low' | 'auto'
 }
-
 
 const NODES = [
   { top: '-1rem',  right: '-1.2rem', size: '0.55rem', color: 'var(--color-accent-alt)', delay: 0,   dur: 2.8 },
@@ -34,27 +34,42 @@ export function HeroVisual({
   fetchPriority = 'high',
 }: HeroVisualProps) {
   const wrapperRef = useRef<HTMLDivElement>(null)
-  const reduced = useReducedMotion()
-  const theme = useDocumentTheme()
+  const frameRef   = useRef<number>(0)
+  const reduced    = useReducedMotion()
+  const isMobile   = useIsMobile()
+  const theme      = useDocumentTheme()
 
-  const isLight = theme === 'light' && Boolean(srcLight)
+  // Disable all heavy animation on mobile or reduced motion
+  const disableMotion = reduced || isMobile
+
+  const isLight    = theme === 'light' && Boolean(srcLight)
   const currentSrc = isLight ? (srcLight as string) : src
 
-  const rawX = useMotionValue(0)
-  const rawY = useMotionValue(0)
-  const rotateY  = useTransform(rawX, [-0.5, 0.5], [-9,  9])
-  const rotateX  = useTransform(rawY, [-0.5, 0.5], [ 6, -6])
-  const springY  = useSpring(rotateY, { stiffness: 70, damping: 18 })
-  const springX  = useSpring(rotateX, { stiffness: 70, damping: 18 })
+  const rawX   = useMotionValue(0)
+  const rawY   = useMotionValue(0)
+  const rotateY = useTransform(rawX, [-0.5, 0.5], [-9,  9])
+  const rotateX = useTransform(rawY, [-0.5, 0.5], [ 6, -6])
+  const springY = useSpring(rotateY, { stiffness: 70, damping: 18 })
+  const springX = useSpring(rotateX, { stiffness: 70, damping: 18 })
 
   function onMove(e: React.MouseEvent<HTMLDivElement>) {
-    if (!wrapperRef.current) return
-    const r = wrapperRef.current.getBoundingClientRect()
-    rawX.set((e.clientX - r.left)  / r.width  - 0.5)
-    rawY.set((e.clientY - r.top)   / r.height - 0.5)
+    if (!wrapperRef.current || frameRef.current) return
+    // Capture values before RAF (synthetic event may be recycled)
+    const { clientX, clientY } = e
+    frameRef.current = requestAnimationFrame(() => {
+      if (!wrapperRef.current) return
+      const r = wrapperRef.current.getBoundingClientRect()
+      rawX.set((clientX - r.left) / r.width  - 0.5)
+      rawY.set((clientY - r.top)  / r.height - 0.5)
+      frameRef.current = 0
+    })
   }
 
   function onLeave() {
+    if (frameRef.current) {
+      cancelAnimationFrame(frameRef.current)
+      frameRef.current = 0
+    }
     rawX.set(0)
     rawY.set(0)
   }
@@ -72,10 +87,10 @@ export function HeroVisual({
   return (
     <div
       ref={wrapperRef}
-      onMouseMove={reduced ? undefined : onMove}
-      onMouseLeave={reduced ? undefined : onLeave}
+      onMouseMove={disableMotion ? undefined : onMove}
+      onMouseLeave={disableMotion ? undefined : onLeave}
       className={`relative mx-auto w-full max-w-[300px] sm:max-w-[440px] lg:max-w-[500px] ${className}`}
-      style={{ perspective: '900px' }}
+      style={disableMotion ? undefined : { perspective: '900px' }}
     >
       {/* Ambient glow */}
       <div
@@ -88,17 +103,17 @@ export function HeroVisual({
         }}
       />
 
-      {/* 3-D tilt */}
+      {/* 3-D tilt wrapper — disabled on mobile */}
       <motion.div
         style={
-          reduced
+          disableMotion
             ? {}
             : { rotateX: springX, rotateY: springY, transformStyle: 'preserve-3d' }
         }
       >
-        {/* Float */}
+        {/* Float — disabled on mobile */}
         <motion.div
-          animate={reduced ? {} : { y: [0, -11, 0] }}
+          animate={disableMotion ? {} : { y: [0, -11, 0] }}
           transition={{ duration: 3.6, repeat: Infinity, ease: 'easeInOut' }}
         >
           <div className="image-frame-surface card-lift rounded-[1.35rem] p-2 sm:rounded-[1.75rem] sm:p-2.5">
@@ -114,9 +129,9 @@ export function HeroVisual({
                   loading={loading}
                   fetchPriority={fetchPriority}
                   decoding="async"
-                  initial={reduced ? false : { opacity: 0 }}
+                  initial={disableMotion ? false : { opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  exit={reduced ? undefined : { opacity: 0 }}
+                  exit={disableMotion ? undefined : { opacity: 0 }}
                   transition={{ duration: 0.37, ease: 'easeInOut' }}
                   className="absolute inset-0 h-full w-full object-cover"
                 />
@@ -125,8 +140,8 @@ export function HeroVisual({
           </div>
         </motion.div>
 
-        {/* Floating data-node dots */}
-        {!reduced && NODES.map((n, i) => (
+        {/* Floating data-node dots — desktop only */}
+        {!disableMotion && NODES.map((n, i) => (
           <motion.span
             key={i}
             aria-hidden="true"

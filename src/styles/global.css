@@ -645,3 +645,63 @@ a {
 :root[data-theme="light"] .hero-visual-glow {
   opacity: 0.75;
 }
+
+/* ─── Mobile optimizations (touch/coarse devices) ────────────────────────── */
+@media (hover: none) and (pointer: coarse) {
+  /* Remove expensive backdrop-filter blurs */
+  .nav-shell,
+  .button-surface-secondary,
+  .hero-role-surface {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  /* Disable hover-only transforms — no hover events on touch */
+  .card-lift:hover,
+  .card-lift:focus-visible,
+  .motion-button:hover,
+  .motion-button:focus-visible {
+    transform: none;
+  }
+
+  /* Shorten theme-switch transitions for faster perceived response */
+  .nav-shell,
+  .nav-link-active,
+  .theme-toggle,
+  .theme-toggle__track,
+  .theme-toggle__thumb,
+  .button-surface-primary,
+  .button-surface-secondary,
+  .surface-card,
+  .project-card-surface,
+  .service-card-surface,
+  .interactive-row,
+  .image-frame-surface,
+  .badge-surface,
+  .footer-icon-button,
+  .icon-surface-button,
+  .glow-icon-box,
+  .hero-role-surface,
+  .whatsapp-border-sweep,
+  .whatsapp-button-surface {
+    transition:
+      background 300ms ease,
+      background-color 300ms ease,
+      border-color 300ms ease,
+      color 300ms ease,
+      opacity 200ms ease;
+    /* Remove box-shadow and transform transitions — not needed on touch */
+  }
+
+  /* Disable hover sweep effect on whatsapp button */
+  .whatsapp-border-sweep::before,
+  .whatsapp-border-sweep::after {
+    display: none;
+  }
+
+  /* Disable hero glow blur on mobile (expensive paint) */
+  .hero-visual-glow {
+    filter: none;
+    opacity: 0.4;
+  }
+}
