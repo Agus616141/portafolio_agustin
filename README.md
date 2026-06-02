@@ -213,3 +213,4 @@ cp .env.example .env
 - GitHub: [Agus616141](https://github.com/Agus616141)
 - LinkedIn: [pablo-agustin-meza](https://www.linkedin.com/in/pablo-agustin-meza-6981352a6/)
 - Email: pablo616141@gmail.com
+
