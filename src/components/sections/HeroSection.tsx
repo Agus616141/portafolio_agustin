@@ -43,15 +43,15 @@ export function HeroSection() {
       bodyAlign="center"
       maxWidthClassName="max-w-[1120px]"
     >
+      {/* Two-column grid */}
       <div className="grid w-full gap-8 md:gap-12 lg:grid-cols-[1fr_0.98fr] lg:items-center lg:gap-16">
+
         {/* Text column */}
         <div className="mx-auto max-w-2xl lg:mx-0">
 
           <h1 className={`${titleHoverClass} text-center text-4xl font-black leading-[1.04] text-[var(--color-text)] sm:text-4xl md:text-5xl lg:text-left lg:text-6xl`}>
             Hola, soy{' '}
-            <span className={nameBlinkClass}>
-              {hero.name}
-            </span>
+            <span className={nameBlinkClass}>{hero.name}</span>
           </h1>
 
           {/* Role row */}
@@ -68,7 +68,6 @@ export function HeroSection() {
               >
                 <LuChevronRight className="text-sm sm:text-lg" />
               </button>
-
               <div
                 className={cn(
                   roleCardClass,
@@ -90,10 +89,7 @@ export function HeroSection() {
           </p>
 
           <div className="mt-10 flex flex-col items-center gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:items-start sm:gap-4">
-            <Button
-              href="#contact"
-              className="w-full justify-center gap-2 px-6 sm:w-auto"
-            >
+            <Button href="#contact" className="w-full justify-center gap-2 px-6 sm:w-auto">
               <LuArrowRight className="text-base" />
               {hero.primaryButtonLabel}
             </Button>
@@ -131,13 +127,13 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* Scroll indicator — mobile only, debajo de los iconos sociales */}
-          <div className="mt-10 flex justify-center lg:justify-start">
+          {/* Mobile scroll indicator — inline, below social icons */}
+          <div className="mt-10 flex justify-center lg:hidden">
             <button
               type="button"
               onClick={() => scrollToSectionId('about')}
-              aria-label="Ver sección Sobre mí"
-              className="flex flex-col items-center gap-1.5 text-[var(--color-subtle)] transition-colors hover:text-[var(--color-muted)]"
+              aria-label="Ver más"
+              className="text-[var(--color-subtle)] transition-colors hover:text-[var(--color-muted)]"
             >
               <LuChevronDown className="animate-bounce text-2xl" />
             </button>
@@ -145,7 +141,7 @@ export function HeroSection() {
 
         </div>
 
-        {/* Image — hidden on mobile, visible from lg */}
+        {/* Image — desktop only */}
         <div className="hidden lg:block">
           <HeroVisual
             src={hero.imageSrc}
@@ -154,6 +150,19 @@ export function HeroSection() {
           />
         </div>
       </div>
+
+      {/* Desktop scroll indicator — centered below the full grid, bigger */}
+      <div className="hidden w-full justify-center lg:flex">
+        <button
+          type="button"
+          onClick={() => scrollToSectionId('about')}
+          aria-label="Ver más"
+          className="text-[var(--color-subtle)] transition-colors hover:text-[var(--color-muted)]"
+        >
+          <LuChevronDown className="animate-bounce text-5xl" />
+        </button>
+      </div>
+
     </SectionShell>
   )
 }

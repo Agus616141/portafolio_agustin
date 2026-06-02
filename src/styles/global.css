@@ -654,6 +654,13 @@ a {
     background-attachment: scroll;
   }
 
+  /* Hero section: usar 100svh completo para que no se vea la sección siguiente.
+     SectionFrame usa calc(100svh - nav-offset) que deja nav-offset píxeles
+     mostrando la sección de abajo. En mobile lo corregimos aquí. */
+  [data-section-frame]:first-of-type {
+    min-height: 100svh;
+  }
+
   /* Ocultar capas decorativas fixed — costosas de componer en scroll */
   .page-theme-dots,
   .page-theme-atmosphere,
