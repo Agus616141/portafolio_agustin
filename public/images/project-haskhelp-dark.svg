@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 430">
+  <!-- HaskHelp – dark mode illustration -->
+
+  <!-- Sidebar -->
+  <rect x="28" y="28" width="188" height="374" rx="12" fill="#0d1036" fill-opacity="0.55" stroke="#48d8ff" stroke-opacity="0.16" stroke-width="1.2"/>
+  <text x="122" y="62" font-family="ui-sans-serif,sans-serif" font-size="17" fill="#48d8ff" text-anchor="middle" font-weight="700">HaskHelp</text>
+
+  <!-- Sidebar menu items -->
+  <rect x="44" y="80" width="156" height="32" rx="8" fill="#48d8ff" fill-opacity="0.12" stroke="#48d8ff" stroke-opacity="0.2" stroke-width="0.8"/>
+  <rect x="52" y="90" width="12" height="12" rx="3" fill="#48d8ff" fill-opacity="0.5"/>
+  <text x="72" y="101" font-family="ui-sans-serif,sans-serif" font-size="13" fill="#48d8ff" font-weight="600">Registros</text>
+
+  <rect x="52" y="128" width="12" height="12" rx="3" fill="#4a6888" fill-opacity="0.5"/>
+  <text x="72" y="139" font-family="ui-sans-serif,sans-serif" font-size="13" fill="#4a6888">Buscar</text>
+
+  <rect x="52" y="162" width="12" height="12" rx="3" fill="#4a6888" fill-opacity="0.5"/>
+  <text x="72" y="173" font-family="ui-sans-serif,sans-serif" font-size="13" fill="#4a6888">Categorías</text>
+
+  <rect x="52" y="196" width="12" height="12" rx="3" fill="#4a6888" fill-opacity="0.5"/>
+  <text x="72" y="207" font-family="ui-sans-serif,sans-serif" font-size="13" fill="#4a6888">Reportes</text>
+
+  <rect x="52" y="230" width="12" height="12" rx="3" fill="#4a6888" fill-opacity="0.5"/>
+  <text x="72" y="241" font-family="ui-sans-serif,sans-serif" font-size="13" fill="#4a6888">Configuración</text>
+
+  <!-- User info bottom of sidebar -->
+  <line x1="44" y1="358" x2="200" y2="358" stroke="#1e2456" stroke-width="1"/>
+  <circle cx="68" cy="384" r="16" fill="#7c3aed" fill-opacity="0.3"/>
+  <text x="68" y="389" font-family="ui-sans-serif,sans-serif" font-size="15" fill="#a78bfa" text-anchor="middle">A</text>
+  <text x="96" y="382" font-family="ui-sans-serif,sans-serif" font-size="13" fill="#c8d0ff">Agustin</text>
+  <text x="96" y="397" font-family="ui-monospace,monospace" font-size="11" fill="#4a6888">JWT · Admin</text>
+
+  <!-- Main panel -->
+  <rect x="234" y="28" width="538" height="374" rx="12" fill="#0d1036" fill-opacity="0.5" stroke="#1e2456" stroke-width="1"/>
+
+  <!-- Toolbar -->
+  <rect x="250" y="46" width="320" height="32" rx="8" fill="#07091a" fill-opacity="0.6" stroke="#1e2456" stroke-width="1"/>
+  <text x="272" y="66" font-family="ui-sans-serif,sans-serif" font-size="13" fill="#4a6888">Buscar registros...</text>
+  <!-- Filter + New buttons -->
+  <rect x="580" y="46" width="60" height="32" rx="8" fill="#48d8ff" fill-opacity="0.12" stroke="#48d8ff" stroke-opacity="0.3" stroke-width="0.8"/>
+  <text x="610" y="66" font-family="ui-sans-serif,sans-serif" font-size="13" fill="#48d8ff" text-anchor="middle">Filtrar</text>
+  <rect x="648" y="46" width="108" height="32" rx="8" fill="#48d8ff" fill-opacity="0.18"/>
+  <text x="702" y="66" font-family="ui-sans-serif,sans-serif" font-size="13" fill="#48d8ff" text-anchor="middle">+ Nuevo</text>
+
+  <!-- Table header -->
+  <rect x="250" y="96" width="506" height="28" rx="0" fill="#141840"/>
+  <text x="268" y="114" font-family="ui-monospace,monospace" font-size="11" fill="#4a6888">ID</text>
+  <text x="312" y="114" font-family="ui-monospace,monospace" font-size="11" fill="#4a6888">TÍTULO</text>
+  <text x="490" y="114" font-family="ui-monospace,monospace" font-size="11" fill="#4a6888">CATEGORÍA</text>
+  <text x="618" y="114" font-family="ui-monospace,monospace" font-size="11" fill="#4a6888">ESTADO</text>
+
+  <!-- Row 1 -->
+  <rect x="250" y="124" width="506" height="42" rx="0" fill="#0f1235"/>
+  <line x1="250" y1="166" x2="756" y2="166" stroke="#1e2456" stroke-width="1"/>
+  <text x="268" y="149" font-family="ui-monospace,monospace" font-size="12" fill="#4a6888">#001</text>
+  <text x="312" y="149" font-family="ui-sans-serif,sans-serif" font-size="13" fill="#c8d0ff">Guía de TypeScript</text>
+  <rect x="490" y="133" width="78" height="20" rx="5" fill="#22d3ee" fill-opacity="0.14"/>
+  <text x="529" y="147" font-family="ui-sans-serif,sans-serif" font-size="11" fill="#22d3ee" text-anchor="middle">Docs</text>
+  <rect x="618" y="133" width="62" height="20" rx="5" fill="#4ade80" fill-opacity="0.14"/>
+  <text x="649" y="147" font-family="ui-sans-serif,sans-serif" font-size="11" fill="#4ade80" text-anchor="middle">Activo</text>
+
+  <!-- Row 2 -->
+  <rect x="250" y="166" width="506" height="42" rx="0" fill="#141840"/>
+  <line x1="250" y1="208" x2="756" y2="208" stroke="#1e2456" stroke-width="1"/>
+  <text x="268" y="191" font-family="ui-monospace,monospace" font-size="12" fill="#4a6888">#002</text>
+  <text x="312" y="191" font-family="ui-sans-serif,sans-serif" font-size="13" fill="#c8d0ff">API REST con Express</text>
+  <rect x="490" y="175" width="78" height="20" rx="5" fill="#8b5cff" fill-opacity="0.16"/>
+  <text x="529" y="189" font-family="ui-sans-serif,sans-serif" font-size="11" fill="#a78bfa" text-anchor="middle">Backend</text>
+  <rect x="618" y="175" width="62" height="20" rx="5" fill="#4ade80" fill-opacity="0.14"/>
+  <text x="649" y="189" font-family="ui-sans-serif,sans-serif" font-size="11" fill="#4ade80" text-anchor="middle">Activo</text>
+
+  <!-- Row 3 -->
+  <rect x="250" y="208" width="506" height="42" rx="0" fill="#0f1235"/>
+  <line x1="250" y1="250" x2="756" y2="250" stroke="#1e2456" stroke-width="1"/>
+  <text x="268" y="233" font-family="ui-monospace,monospace" font-size="12" fill="#4a6888">#003</text>
+  <text x="312" y="233" font-family="ui-sans-serif,sans-serif" font-size="13" fill="#c8d0ff">MySQL Schema Design</text>
+  <rect x="490" y="217" width="78" height="20" rx="5" fill="#f59e0b" fill-opacity="0.14"/>
+  <text x="529" y="231" font-family="ui-sans-serif,sans-serif" font-size="11" fill="#fbbf24" text-anchor="middle">Base datos</text>
+  <rect x="618" y="217" width="62" height="20" rx="5" fill="#fbbf24" fill-opacity="0.14"/>
+  <text x="649" y="231" font-family="ui-sans-serif,sans-serif" font-size="11" fill="#fbbf24" text-anchor="middle">Draft</text>
+
+  <!-- Row 4 -->
+  <rect x="250" y="250" width="506" height="42" rx="0" fill="#141840"/>
+  <line x1="250" y1="292" x2="756" y2="292" stroke="#1e2456" stroke-width="1"/>
+  <text x="268" y="275" font-family="ui-monospace,monospace" font-size="12" fill="#4a6888">#004</text>
+  <text x="312" y="275" font-family="ui-sans-serif,sans-serif" font-size="13" fill="#c8d0ff">Autenticación JWT</text>
+  <rect x="490" y="259" width="78" height="20" rx="5" fill="#ef4444" fill-opacity="0.14"/>
+  <text x="529" y="273" font-family="ui-sans-serif,sans-serif" font-size="11" fill="#f87171" text-anchor="middle">Seguridad</text>
+  <rect x="618" y="259" width="62" height="20" rx="5" fill="#4ade80" fill-opacity="0.14"/>
+  <text x="649" y="273" font-family="ui-sans-serif,sans-serif" font-size="11" fill="#4ade80" text-anchor="middle">Activo</text>
+
+  <!-- Footer stack bar -->
+  <rect x="250" y="310" width="506" height="76" rx="8" fill="#07091a" fill-opacity="0.5" stroke="#1e2456" stroke-width="1"/>
+  <text x="268" y="335" font-family="ui-monospace,monospace" font-size="11" fill="#4a6888">Stack:</text>
+  <rect x="310" y="320" width="74" height="18" rx="4" fill="#3b82f6" fill-opacity="0.14"/>
+  <text x="347" y="333" font-family="ui-monospace,monospace" font-size="11" fill="#60a5fa" text-anchor="middle">TypeScript</text>
+  <rect x="392" y="320" width="66" height="18" rx="4" fill="#22d3ee" fill-opacity="0.12"/>
+  <text x="425" y="333" font-family="ui-monospace,monospace" font-size="11" fill="#22d3ee" text-anchor="middle">Express</text>
+  <rect x="466" y="320" width="56" height="18" rx="4" fill="#f59e0b" fill-opacity="0.12"/>
+  <text x="494" y="333" font-family="ui-monospace,monospace" font-size="11" fill="#fbbf24" text-anchor="middle">MySQL</text>
+  <rect x="530" y="320" width="40" height="18" rx="4" fill="#ef4444" fill-opacity="0.12"/>
+  <text x="550" y="333" font-family="ui-monospace,monospace" font-size="11" fill="#f87171" text-anchor="middle">JWT</text>
+  <rect x="578" y="320" width="46" height="18" rx="4" fill="#a78bfa" fill-opacity="0.12"/>
+  <text x="601" y="333" font-family="ui-monospace,monospace" font-size="11" fill="#a78bfa" text-anchor="middle">bcrypt</text>
+  <rect x="632" y="320" width="38" height="18" rx="4" fill="#4ade80" fill-opacity="0.12"/>
+  <text x="651" y="333" font-family="ui-monospace,monospace" font-size="11" fill="#4ade80" text-anchor="middle">Zod</text>
+  <text x="268" y="368" font-family="ui-monospace,monospace" font-size="11" fill="#4a6888">Total: 4 registros · Página 1 de 1</text>
+</svg>

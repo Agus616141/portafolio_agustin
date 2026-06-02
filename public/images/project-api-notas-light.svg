@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 430">
+  <!-- API de Notas – light mode illustration -->
+
+  <!-- Central panel -->
+  <rect x="160" y="30" width="480" height="360" rx="16" fill="#ffffff" fill-opacity="0.6" stroke="#0891b2" stroke-opacity="0.22" stroke-width="1.5"/>
+
+  <!-- Title bar -->
+  <rect x="160" y="30" width="480" height="40" rx="16" fill="#0891b2" fill-opacity="0.09"/>
+  <rect x="160" y="52" width="480" height="18" fill="#0891b2" fill-opacity="0.09"/>
+  <circle cx="192" cy="50" r="6" fill="#9333ea" fill-opacity="0.7"/>
+  <circle cx="214" cy="50" r="6" fill="#0891b2" fill-opacity="0.55"/>
+  <circle cx="236" cy="50" r="6" fill="#6d28d9" fill-opacity="0.4"/>
+  <text x="400" y="56" text-anchor="middle" font-family="ui-monospace,monospace" font-size="18" fill="#0891b2" fill-opacity="0.9">/api/notes</text>
+
+  <!-- GET -->
+  <rect x="188" y="92" width="66" height="28" rx="7" fill="#0e7490" fill-opacity="0.12" stroke="#0e7490" stroke-opacity="0.45" stroke-width="1"/>
+  <text x="221" y="111" text-anchor="middle" font-family="ui-monospace,monospace" font-size="17" font-weight="700" fill="#0e7490">GET</text>
+  <text x="420" y="111" text-anchor="middle" font-family="ui-monospace,monospace" font-size="17" fill="#475569" fill-opacity="0.8">/notes</text>
+  <rect x="596" y="95" width="32" height="20" rx="5" fill="#0e7490" fill-opacity="0.1"/>
+  <text x="612" y="109" text-anchor="middle" font-family="ui-monospace,monospace" font-size="13" fill="#0e7490">200</text>
+
+  <!-- POST -->
+  <rect x="188" y="140" width="76" height="28" rx="7" fill="#166534" fill-opacity="0.1" stroke="#166534" stroke-opacity="0.38" stroke-width="1"/>
+  <text x="226" y="159" text-anchor="middle" font-family="ui-monospace,monospace" font-size="17" font-weight="700" fill="#166534">POST</text>
+  <text x="420" y="159" text-anchor="middle" font-family="ui-monospace,monospace" font-size="17" fill="#475569" fill-opacity="0.8">/notes</text>
+  <rect x="596" y="143" width="32" height="20" rx="5" fill="#166534" fill-opacity="0.1"/>
+  <text x="612" y="157" text-anchor="middle" font-family="ui-monospace,monospace" font-size="13" fill="#166534">201</text>
+
+  <!-- PUT -->
+  <rect x="188" y="188" width="60" height="28" rx="7" fill="#92400e" fill-opacity="0.1" stroke="#92400e" stroke-opacity="0.38" stroke-width="1"/>
+  <text x="218" y="207" text-anchor="middle" font-family="ui-monospace,monospace" font-size="17" font-weight="700" fill="#92400e">PUT</text>
+  <text x="420" y="207" text-anchor="middle" font-family="ui-monospace,monospace" font-size="17" fill="#475569" fill-opacity="0.8">/notes/:id</text>
+  <rect x="596" y="191" width="32" height="20" rx="5" fill="#92400e" fill-opacity="0.1"/>
+  <text x="612" y="205" text-anchor="middle" font-family="ui-monospace,monospace" font-size="13" fill="#92400e">200</text>
+
+  <!-- DELETE -->
+  <rect x="188" y="236" width="92" height="28" rx="7" fill="#991b1b" fill-opacity="0.1" stroke="#991b1b" stroke-opacity="0.38" stroke-width="1"/>
+  <text x="234" y="255" text-anchor="middle" font-family="ui-monospace,monospace" font-size="17" font-weight="700" fill="#991b1b">DELETE</text>
+  <text x="420" y="255" text-anchor="middle" font-family="ui-monospace,monospace" font-size="17" fill="#475569" fill-opacity="0.8">/notes/:id</text>
+  <rect x="596" y="239" width="32" height="20" rx="5" fill="#991b1b" fill-opacity="0.1"/>
+  <text x="612" y="253" text-anchor="middle" font-family="ui-monospace,monospace" font-size="13" fill="#991b1b">204</text>
+
+  <!-- Divider -->
+  <line x1="188" y1="282" x2="636" y2="282" stroke="#0891b2" stroke-opacity="0.18" stroke-width="1"/>
+
+  <!-- Response sample -->
+  <text x="200" y="308" font-family="ui-monospace,monospace" font-size="16" fill="#6d28d9" fill-opacity="0.65">{ "id": 1, "title": "Mi nota", "userId": 42 }</text>
+
+  <!-- Badges -->
+  <rect x="188" y="326" width="102" height="24" rx="12" fill="#9333ea" fill-opacity="0.09" stroke="#9333ea" stroke-opacity="0.38" stroke-width="1"/>
+  <text x="239" y="342" text-anchor="middle" font-family="ui-monospace,monospace" font-size="15" fill="#9333ea">Auth · JWT</text>
+
+  <rect x="302" y="326" width="94" height="24" rx="12" fill="#0891b2" fill-opacity="0.09" stroke="#0891b2" stroke-opacity="0.3" stroke-width="1"/>
+  <text x="349" y="342" text-anchor="middle" font-family="ui-monospace,monospace" font-size="15" fill="#0891b2">Zod · TS</text>
+
+  <!-- Note icon – left -->
+  <rect x="38" y="128" width="86" height="110" rx="10" fill="#6d28d9" fill-opacity="0.06" stroke="#6d28d9" stroke-opacity="0.22" stroke-width="1.2"/>
+  <rect x="54" y="146" width="54" height="6" rx="3" fill="#6d28d9" fill-opacity="0.45"/>
+  <rect x="54" y="160" width="44" height="5" rx="2.5" fill="#6d28d9" fill-opacity="0.28"/>
+  <rect x="54" y="173" width="50" height="5" rx="2.5" fill="#6d28d9" fill-opacity="0.28"/>
+  <rect x="54" y="186" width="36" height="5" rx="2.5" fill="#6d28d9" fill-opacity="0.2"/>
+  <rect x="54" y="207" width="54" height="14" rx="7" fill="#6d28d9" fill-opacity="0.1" stroke="#6d28d9" stroke-opacity="0.3" stroke-width="0.8"/>
+  <text x="81" y="218" text-anchor="middle" font-family="ui-monospace,monospace" font-size="12" fill="#6d28d9">Nota</text>
+
+  <!-- Database icon – right -->
+  <ellipse cx="724" cy="182" rx="44" ry="13" fill="#0891b2" fill-opacity="0.08" stroke="#0891b2" stroke-opacity="0.25" stroke-width="1.2"/>
+  <line x1="680" y1="182" x2="680" y2="240" stroke="#0891b2" stroke-opacity="0.2" stroke-width="1.2"/>
+  <line x1="768" y1="182" x2="768" y2="240" stroke="#0891b2" stroke-opacity="0.2" stroke-width="1.2"/>
+  <ellipse cx="724" cy="210" rx="44" ry="13" fill="none" stroke="#0891b2" stroke-opacity="0.12" stroke-width="1" stroke-dasharray="4,3"/>
+  <ellipse cx="724" cy="240" rx="44" ry="13" fill="#0891b2" fill-opacity="0.08" stroke="#0891b2" stroke-opacity="0.25" stroke-width="1.2"/>
+  <text x="724" y="268" text-anchor="middle" font-family="ui-monospace,monospace" font-size="16" fill="#0891b2" fill-opacity="0.6">PostgreSQL</text>
+
+  <!-- Accent dots -->
+  <circle cx="42" cy="42" r="5" fill="#9333ea" fill-opacity="0.45"/>
+  <circle cx="758" cy="392" r="7" fill="#0891b2" fill-opacity="0.35"/>
+  <circle cx="758" cy="42" r="4" fill="#6d28d9" fill-opacity="0.35"/>
+</svg>

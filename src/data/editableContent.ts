@@ -15,33 +15,34 @@ export const editableContent = {
       'Fullstack Developer',
     ],
     summary:
-      'Desarrollo soluciones backend con foco en APIs, arquitectura, bases de datos, autenticacion y logica de negocio escalable.',
+      'Desarrollo soluciones backend enfocadas en arquitectura, APIs, bases de datos, autenticacion y logica de negocio escalable.',
     socialLabel: 'Seguime',
     primaryButtonLabel: 'Contactame',
     secondaryButtonLabel: 'Descargar CV',
     secondaryButtonHref: '/cv/Agustin_CV.pdf',
-    imageSrc: '/images/hero.png',
-    imageAlt: 'Visual principal del portfolio de Agustin',
+    imageSrc: '/images/hero-dark.png',
+    imageSrcLight: '/images/hero-light.png',
+    imageAlt: 'Arquitectura backend abstracta con conexiones de datos',
   },
 
   // About: presentacion breve, imagen y bloques de perfil.
   about: {
     name: 'Agustin',
     summary:
-      'Estudiante y desarrollador frontend enfocado en interfaces limpias, experiencias suaves y codigo mantenible para proyectos web modernos.',
-    imageSrc: '/images/profile-placeholder.svg',
-    imageAlt: 'Placeholder visual de Agustin',
+      'Estudiante de Ingenieria en Sistemas y desarrollador backend. Me interesa la arquitectura de software, base de datos y el desarrollo de soluciones mantenibles orientadas a proyectos reales.',
+    imageSrc: '/images/about-dark.png',
+    imageSrcLight: '/images/about-light.png',
+    imageAlt: 'Desarrollador trabajando en su setup',
     highlights: [
       {
-        place: 'Formacion autodidacta y proyectos guiados',
-        detail: 'React, TypeScript, UI responsive y buenas practicas de maquetado.',
-        period: '2024 - Actualidad',
+        place: 'Ingenieria en Sist. & Backend',
+        detail: 'Cursando Ingenieria en Sistemas. Enfoque en arquitectura de software, desarrollo backend y manejo de base de datos.',
+        period: 'En formacion continua',
       },
       {
-        place: 'Proyectos personales y practicas de portfolio',
-        detail:
-          'Desarrollo de interfaces, animaciones, componentes reutilizables y secciones pensadas para escalar.',
-        period: '2024 - Actualidad',
+        place: 'Proyectos personales y practicas tecnicas',
+        detail: 'APIs REST, autenticacion, bases de datos y logica backend en proyectos academicos y personales.',
+        period: 'Proyectos activos',
       },
     ],
     skillsTitle: 'Habilidades Tecnicas',
@@ -49,60 +50,63 @@ export const editableContent = {
 
   // Projects: texto general de la seccion.
   projectsSection: {
-    description: 'Algunos de los proyectos en los que he trabajado',
+    description: 'Proyectos desarrollados aplicando logica backend, APIs REST y manejo de bases de datos.',
   },
 
   // Projects list: tarjetas, links y miniaturas.
   projects: [
     {
       description:
-        'Plataforma educativa especializada en Inteligencia Artificial, programacion y matematicas aplicadas.',
-      tags: ['Next.js', 'React', 'TypeScript', 'Tailwind'],
-      href: '#',
+        'API REST para gestion de notas personales con operaciones CRUD, persistencia de datos y autenticacion basica',
+      tags: ['Node.js', 'Express', 'SQL/PostgreSQL', 'Zod', 'React', 'TypeScript'],
+      href: 'https://github.com/Agus616141/API-Notas-Personales',
       ctaLabel: 'Ver Proyecto',
-      ctaType: 'external',
-      image: '/images/profile-placeholder.svg',
-      imageAlt: 'Vista conceptual del proyecto Penguin Academy',
-    },
-    {
-      description:
-        'Aplicacion web interactiva con animaciones 3D creadas con ThreeJS.',
-      tags: ['ThreeJS', 'JavaScript', 'WebGL', '3D'],
-      href: '#',
-      ctaLabel: 'Ver Proyecto',
-      ctaType: 'external',
-      image: '/images/profile-placeholder.svg',
-      imageAlt: 'Vista conceptual del proyecto TREE.JS',
-    },
-    {
-      description:
-        'Sistema de automajora para agentes de IA, disenado para dominios complejos con ingenieria de software.',
-      tags: ['Python', 'AI', 'Machine Learning'],
-      href: '#',
-      ctaLabel: 'GitHub',
       ctaType: 'github',
-      image: '/images/profile-placeholder.svg',
-      imageAlt: 'Vista conceptual del proyecto Entropy Evolve',
+      image: '/images/project-api-notas-dark.svg',
+      imageLight: '/images/project-api-notas-light.svg',
+      imageAlt: 'Vista conceptual del proyecto API de Notas',
+    },
+    {
+      description:
+        'Aplicacion desarrollada como proyecto final, con autenticacion, manejo de productos, base de datos y logica backend.',
+      tags: ['Next.js', 'Express', 'MongoDB', 'Handlebars','APIs REST'],
+      href: 'https://github.com/Agus616141/ecommerce-tp',
+      ctaLabel: 'Ver Proyecto',
+      ctaType: 'github',
+      image: '/images/project-ecommerce-dark.svg',
+      imageLight: '/images/project-ecommerce-light.svg',
+      imageAlt: 'Vista conceptual del proyecto Ecommerce Fullstack',
+    },
+    {
+      description:
+        'Sistema orientado a organizacion y gestion de informacion utilizando logica backend y almacenamiento en base de datos.',
+      tags: ['TypeScript', 'Express', 'MySQL', 'REST APIs', 'JWT', 'bcrypt', 'Zod'],
+      href: 'https://github.com/Agus616141/Sistema-de-Tickets-Helpdesk',
+      ctaLabel: 'Ver Proyecto',
+      ctaType: 'github',
+      image: '/images/project-haskhelp-dark.svg',
+      imageLight: '/images/project-haskhelp-light.svg',
+      imageAlt: 'Vista conceptual del proyecto HaskHelp',
     },
   ],
 
   // Services: texto general, CTA y descripcion de cards.
   servicesSection: {
-    description: 'Lo que puedo hacer por ti',
+    description: 'Soluciones backend orientadas a calidad, mantenibilidad y rendimiento.',
     ctaLabel: 'Contratame',
     ctaHref: '#contact',
     items: [
       {
         description:
-          'Creacion de aplicaciones web modernas, responsive y mantenibles con foco en experiencia de usuario.',
+          'Desarrollo de APIs REST, autenticacion, manejo de base de datos y logica de negocio escalable.',
       },
       {
         description:
-          'Integracion de flujos con IA, automatizacion y soluciones orientadas a sistemas utiles para negocios reales.',
+          'Diseño de sistemas backend mantenibles utilizando buenas practicas, validaciones y estructuras escalables.',
       },
       {
         description:
-          'Construccion de soluciones completas desde el frontend hasta la logica backend, listas para crecer.',
+          'Modelo y manejo de datos con SQL y MongoDB para aplicaciones modernas y eficientes.',
       },
     ],
   },
@@ -138,7 +142,7 @@ export const editableContent = {
   footer: {
     name: 'Agustin Meza',
     summary:
-      'Portfolio profesional orientado a desarrollo frontend, interfaces cuidadas y soluciones web con criterio tecnico.',
+      'Portfolio profesional orientado a desarrollo backend, APIs REST y soluciones tecnicas escalables.',
     copyrightText:
       'Presencia digital, proyectos y canales de contacto.',
     availabilityText:

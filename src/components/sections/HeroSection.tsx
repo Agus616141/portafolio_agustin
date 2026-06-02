@@ -3,7 +3,7 @@ import { useRotatingText } from '../../hooks/useRotatingText'
 import { contact, hero } from '../../data/site'
 import { cn } from '../../lib/cn'
 import { Button } from '../ui/Button'
-import { SectionImageFrame } from '../ui/SectionImageFrame'
+import { HeroVisual } from '../ui/HeroVisual'
 import { SectionShell } from '../ui/SectionShell'
 import {
   buttonHoverClass,
@@ -123,12 +123,10 @@ export function HeroSection() {
           </div>
         </div>
 
-        <SectionImageFrame
+        <HeroVisual
           src={hero.imageSrc}
+          srcLight={hero.imageSrcLight}
           alt={hero.imageAlt}
-          gradientClassName=""
-          loading="eager"
-          fetchPriority="high"
         />
       </div>
     </SectionShell>

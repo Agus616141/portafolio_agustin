@@ -10,18 +10,28 @@ lerna-debug.log*
 node_modules
 dist
 dist-ssr
-.codex/
-.vercel/
 coverage/
 playwright-report/
 test-results/
-.shadow-*.png
-.visual-*.png
+
+# Env
 .env
 .env.*
 !.env.example
 *.local
+
+# Deploy platforms
+.vercel/
+.netlify/
+
+# AI / Claude Code
+.codex/
+.agents/
+.claude/
+skills-lock.json
 SKILL.txt
+.shadow-*.png
+.visual-*.png
 
 # Editor directories and files
 .vscode/*

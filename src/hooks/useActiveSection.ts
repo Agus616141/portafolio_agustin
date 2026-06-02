@@ -5,8 +5,13 @@ export function useActiveSection(sectionIds: string[]) {
 
   useEffect(() => {
     const sections = sectionIds
-      .map((id) => document.getElementById(id))
-      .filter((section): section is HTMLElement => section !== null)
+      .map((id) => {
+        const anchor = document.getElementById(id)
+        if (!anchor) return null
+        const frame = anchor.closest('[data-section-frame]') as HTMLElement | null
+        return { id, el: frame ?? anchor }
+      })
+      .filter((s): s is { id: string; el: HTMLElement } => s !== null)
 
     if (sections.length === 0) {
       return
@@ -16,21 +21,26 @@ export function useActiveSection(sectionIds: string[]) {
 
     const updateActiveSection = () => {
       const viewportHeight = window.innerHeight
-      const marker = window.scrollY + Math.min(Math.max(viewportHeight * 0.32, 160), 340)
+
+      const navOffsetValue = parseFloat(
+        getComputedStyle(document.documentElement).getPropertyValue('--nav-offset') || '0',
+      ) || 0
+
 
       let currentSection = sections[0]?.id ?? ''
 
-      sections.forEach((section) => {
-        const sectionTop = section.offsetTop
-        const sectionBottom = sectionTop + section.offsetHeight
+      sections.forEach(({ id, el }) => {
+        const rect = el.getBoundingClientRect()
+        const top = rect.top
+        const bottom = rect.bottom
 
-        if (marker >= sectionTop && marker < sectionBottom) {
-          currentSection = section.id
+        // consider the fixed navbar offset when determining the active section
+        if (top <= navOffsetValue + Math.min(Math.max(viewportHeight * 0.32, 160), 340) && bottom > navOffsetValue + 8) {
+          currentSection = id
         }
       })
 
       const lastSection = sections[sections.length - 1]
-
       if (lastSection && window.scrollY + viewportHeight >= document.documentElement.scrollHeight - 8) {
         currentSection = lastSection.id
       }

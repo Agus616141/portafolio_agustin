@@ -17,7 +17,8 @@ export function ContactSection() {
   return (
     <CompactSectionShell
       id="contact"
-      className="h-full"
+      scrollMarginTop="calc(var(--nav-offset)+0.5rem)"
+      layoutClassName="items-stretch justify-center min-h-[60svh] lg:flex-1 lg:min-h-0"
       contentClassName="h-full"
       bodyClassName="gap-3 sm:gap-3.5"
       bodyAlign="center"

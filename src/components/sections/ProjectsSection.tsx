@@ -1,35 +1,55 @@
 import { projects, projectsSection } from '../../data/site'
 import { LuArrowRight, LuGithub, LuSquareArrowOutUpRight } from 'react-icons/lu'
+import { AnimatePresence, motion } from 'framer-motion'
 import { Badge } from '../ui/Badge'
 import { CenteredSectionHeader } from '../ui/CenteredSectionHeader'
 import { SectionShell } from '../ui/SectionShell'
+import { useDocumentTheme } from '../../hooks/useDocumentTheme'
 import { cardLiftClass, nameBlinkClass } from '../ui/portfolioStyles'
 
 type ProjectVisualProps = {
   image: string
+  imageLight?: string
   imageAlt: string
   visual: {
     gradientClassName: string
+    gradientClassNameLight?: string
     accentClassName: string
     accentSecondaryClassName: string
     showChart: boolean
+    imgFit?: 'cover' | 'contain'
   }
 }
 
 function ProjectVisual({
   image,
+  imageLight,
   imageAlt,
   visual,
 }: ProjectVisualProps) {
+  const theme = useDocumentTheme()
+  const currentImage = theme === 'light' && imageLight ? imageLight : image
+  const bgClass = theme === 'light' && visual.gradientClassNameLight
+    ? visual.gradientClassNameLight
+    : visual.gradientClassName
+  const imgFit = visual.imgFit ?? 'cover'
+
   return (
     <div
-      className={`relative isolate h-[182px] overflow-hidden rounded-t-[1.15rem] border-b border-[var(--color-border)] sm:h-[196px] ${visual.gradientClassName}`}
+      className={`relative isolate h-[182px] overflow-hidden rounded-t-[1.15rem] border-b border-[var(--color-border)] sm:h-[196px] ${bgClass}`}
     >
-      <img
-        src={image}
-        alt={imageAlt}
-        className="absolute inset-0 h-full w-full object-cover transition-transform duration-[930ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]"
-      />
+      <AnimatePresence mode="sync">
+        <motion.img
+          key={currentImage}
+          src={currentImage}
+          alt={imageAlt}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.37, ease: 'easeInOut' }}
+          className={`absolute inset-0 h-full w-full transition-transform duration-[930ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06] ${imgFit === 'contain' ? 'object-contain p-4' : 'object-cover'}`}
+        />
+      </AnimatePresence>
 
       <div
         className={`absolute top-4 left-5 h-7 w-7 rotate-45 rounded-[0.8rem] opacity-95 blur-[1px] ${visual.accentClassName}`}
@@ -62,6 +82,7 @@ export function ProjectsSection() {
   return (
     <SectionShell
       id="projects"
+      scrollMarginTop="calc(var(--nav-offset)+2rem)"
       header={(
         <CenteredSectionHeader
           title={
@@ -82,14 +103,16 @@ export function ProjectsSection() {
         {projects.map((project) => {
           const LinkIcon =
             project.ctaType === 'github' ? LuGithub : LuSquareArrowOutUpRight
-          const isPlaceholderLink = project.href === '#'
-          const isExternalLink = /^https?:\/\//.test(project.href)
+          const href = project.href as string
+          const isPlaceholderLink = href === '#'
+          const isExternalLink = /^https?:\/\//.test(href)
 
           return (
             <div key={project.title} className="group relative w-full">
               <article className={`project-card-surface relative flex w-full flex-col overflow-hidden rounded-[1.15rem] ${cardLiftClass} group-hover:border-[var(--color-border-strong)] group-hover:shadow-[var(--panel-shadow-strong)]`}>
                 <ProjectVisual
                   image={project.image}
+                  imageLight={'imageLight' in project ? (project as { imageLight?: string }).imageLight : undefined}
                   imageAlt={project.imageAlt}
                   visual={project.visual}
                 />
@@ -123,7 +146,7 @@ export function ProjectsSection() {
                       </span>
                     ) : (
                       <a
-                        href={project.href}
+                        href={href}
                         target={isExternalLink ? '_blank' : undefined}
                         rel={isExternalLink ? 'noreferrer' : undefined}
                         className="inline-flex items-center gap-2 text-[0.92rem] font-semibold text-[var(--color-text)] underline decoration-[var(--color-border-strong)] underline-offset-4 transition-all hover:text-[var(--color-accent-soft)] hover:decoration-[var(--color-accent-soft)]"

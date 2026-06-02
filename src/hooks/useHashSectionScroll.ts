@@ -6,17 +6,13 @@ export function scrollToSectionId(sectionId: string) {
   }
 
   const section = document.getElementById(sectionId)
-
   if (!section) {
     return
   }
 
-  const targetTop = window.scrollY + section.getBoundingClientRect().top
-
-  window.scrollTo({
-    top: Math.max(0, targetTop),
-    left: 0,
-    behavior: 'auto',
+  section.scrollIntoView({
+    behavior: 'smooth',
+    block: 'start',
   })
 }
 

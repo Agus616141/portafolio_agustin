@@ -1,7 +1,7 @@
 import { LuBriefcaseBusiness, LuCode, LuGraduationCap } from 'react-icons/lu'
 import { aboutProfile, stack } from '../../data/site'
 import { Badge } from '../ui/Badge'
-import { SectionImageFrame } from '../ui/SectionImageFrame'
+import { HeroVisual } from '../ui/HeroVisual'
 import { SectionShell } from '../ui/SectionShell'
 import {
   cardLiftClass,
@@ -16,15 +16,16 @@ export function AboutSection() {
   return (
     <SectionShell
       id="about"
+      scrollMarginTop="calc(var(--nav-offset)+0.5rem)"
       bodyClassName="gap-8 sm:gap-12"
       maxWidthClassName="max-w-[1120px]"
     >
       <div className="grid w-full gap-8 md:gap-12 lg:grid-cols-[0.98fr_1fr] lg:items-center lg:gap-16">
-        <SectionImageFrame
+        <HeroVisual
           src={aboutProfile.imageSrc}
+          srcLight={aboutProfile.imageSrcLight}
           alt={aboutProfile.imageAlt}
-          gradientClassName=""
-          wrapperClassName="order-2 lg:order-1"
+          className="order-2 lg:order-1"
           loading="lazy"
           fetchPriority="low"
         />
@@ -52,27 +53,25 @@ export function AboutSection() {
               return (
                 <article
                   key={item.title}
-                  className={`surface-card rounded-[1.35rem] px-4 py-4 sm:px-5 sm:py-5 ${cardLiftClass} hover:border-[var(--color-border-strong)] hover:shadow-[var(--panel-shadow-strong)]`}
+                  className={`surface-card rounded-[1.35rem] px-4 py-4 sm:px-5 ${cardLiftClass} hover:border-[var(--color-border-strong)] hover:shadow-[var(--panel-shadow-strong)]`}
                 >
-                  <div className="flex items-start gap-3">
-                    <div className="glow-icon-box flex h-11 w-11 shrink-0 items-center justify-center rounded-[1rem]">
-                      <Icon className="text-[1.05rem]" />
+                  <div className="flex items-center gap-2.5">
+                    <div className="glow-icon-box flex h-9 w-9 shrink-0 items-center justify-center rounded-[0.85rem]">
+                      <Icon className="text-[0.95rem]" />
                     </div>
-                    <div>
-                      <h3 className="text-xl font-bold text-[var(--color-text)] sm:text-2xl">
-                        {item.title}
-                      </h3>
-                      <p className="mt-2.5 text-base font-semibold text-[var(--color-text)] sm:mt-3">
-                        {item.place}
-                      </p>
-                      <p className="mt-1 text-sm leading-6 text-[var(--color-muted)] sm:leading-7">
-                        {item.detail}
-                      </p>
-                      <p className="mt-1 text-sm leading-6 text-[var(--color-subtle)] sm:leading-7">
-                        {item.period}
-                      </p>
-                    </div>
+                    <h3 className="text-[1rem] font-bold leading-tight text-[var(--color-text)]">
+                      {item.title}
+                    </h3>
                   </div>
+                  <p className="mt-2.5 text-[0.83rem] font-semibold text-[var(--color-text)]">
+                    {item.place}
+                  </p>
+                  <p className="mt-1 text-[0.8rem] leading-[1.6] text-[var(--color-muted)]">
+                    {item.detail}
+                  </p>
+                  <p className="mt-1.5 text-[0.75rem] text-[var(--color-subtle)]">
+                    {item.period}
+                  </p>
                 </article>
               )
             })}

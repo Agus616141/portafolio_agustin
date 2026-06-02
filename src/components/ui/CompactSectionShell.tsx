@@ -12,7 +12,9 @@ type CompactSectionShellProps = {
   bodyAlign?: 'start' | 'center'
   maxWidthClassName?: string
   backgroundClassName?: string
+  layoutClassName?: string
   ariaLabelledby?: string
+  scrollMarginTop?: string
   children: ReactNode
 }
 
@@ -25,14 +27,15 @@ export function CompactSectionShell({
   bodyAlign = 'start',
   maxWidthClassName,
   backgroundClassName,
+  layoutClassName = 'min-h-[85svh] items-stretch',
   ariaLabelledby,
+  scrollMarginTop = 'calc(var(--nav-offset)+1rem)',
   children,
 }: CompactSectionShellProps) {
   return (
     <SectionFrame
-      id={id}
       className={className}
-      layoutClassName="min-h-[85svh] items-stretch"
+      layoutClassName={layoutClassName}
       spacingClassName="px-4 pb-4 sm:px-6 sm:pb-6"
       backgroundClassName={backgroundClassName}
       role="region"
@@ -44,14 +47,16 @@ export function CompactSectionShell({
           maxWidthClassName,
         )}
       >
-        <div className={cn('mx-auto flex h-full w-full flex-1 flex-col', contentClassName)}>
+        <div className={cn('flex h-full w-full flex-1 flex-col', contentClassName)}>
           <div
             aria-hidden="true"
             className="h-[calc(var(--nav-offset)+0.5rem)] shrink-0"
           />
           <div
+            id={id}
             aria-hidden="true"
             data-section-anchor="true"
+            style={{ scrollMarginTop }}
             className="h-0 w-full shrink-0"
           />
 

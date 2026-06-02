@@ -2,7 +2,6 @@ import type { ReactNode } from 'react'
 import { cn } from '../../lib/cn'
 
 type SectionFrameProps = {
-  id: string
   role?: string
   ariaLabelledby?: string
   className?: string
@@ -13,18 +12,16 @@ type SectionFrameProps = {
 }
 
 export function SectionFrame({
-  id,
   role,
   ariaLabelledby,
   className = '',
-  layoutClassName = 'min-h-svh items-center',
+  layoutClassName = 'min-h-[calc(100svh-var(--nav-offset))] items-center',
   spacingClassName = 'px-4 py-16 sm:px-6 sm:py-20',
   backgroundClassName = '',
   children,
 }: SectionFrameProps) {
   return (
     <section
-      id={id}
       role={role}
       aria-labelledby={ariaLabelledby}
       data-section-frame="true"

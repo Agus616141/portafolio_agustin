@@ -12,6 +12,7 @@ type SectionShellProps = {
   bodyAlign?: 'start' | 'center'
   maxWidthClassName?: string
   backgroundClassName?: string
+  scrollMarginTop?: string
   children: ReactNode
 }
 
@@ -27,25 +28,27 @@ export function SectionShell({
   bodyAlign = 'start',
   maxWidthClassName,
   backgroundClassName,
+  scrollMarginTop = 'calc(var(--nav-offset)+1rem)',
   children,
 }: SectionShellProps) {
   return (
     <SectionFrame
-      id={id}
       className={className}
-      layoutClassName="min-h-svh items-stretch"
+      layoutClassName="min-h-[calc(100svh-var(--nav-offset))] items-stretch justify-center"
       spacingClassName="px-4 pb-12 sm:px-6 sm:pb-20"
       backgroundClassName={backgroundClassName ?? defaultSectionBackgroundClass}
     >
-      <SectionReveal className={cn('mx-auto flex w-full max-w-[min(100%,1440px)] flex-1', maxWidthClassName)}>
-        <div className={cn('mx-auto flex w-full flex-1 flex-col', contentClassName)}>
+      <SectionReveal className={cn('mx-auto flex w-full', maxWidthClassName ?? 'max-w-[min(100%,1440px)]')}>
+        <div className={cn('flex w-full flex-1 flex-col', contentClassName)}>
           <div
             aria-hidden="true"
             className="h-[var(--section-shell-top)] shrink-0"
           />
           <div
+            id={id}
             aria-hidden="true"
             data-section-anchor="true"
+            style={{ scrollMarginTop }}
             className="h-0 w-full shrink-0"
           />
 

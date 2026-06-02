@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 430">
+  <!-- Ecommerce Fullstack – dark mode illustration -->
+
+  <!-- Nav bar -->
+  <rect x="40" y="28" width="720" height="42" rx="10" fill="#0d1036" fill-opacity="0.55" stroke="#79dcff" stroke-opacity="0.18" stroke-width="1.2"/>
+  <text x="80" y="54" font-family="ui-sans-serif,sans-serif" font-size="18" fill="#79dcff" font-weight="700">ShopApp</text>
+  <!-- Cart icon -->
+  <path d="M688 38 h10 l8 22 h34 l4-16 h-40" fill="none" stroke="#a78bfa" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="702" cy="62" r="4.5" fill="#a78bfa"/>
+  <circle cx="724" cy="62" r="4.5" fill="#a78bfa"/>
+  <rect x="728" y="36" width="22" height="16" rx="8" fill="#7c3aed"/>
+  <text x="739" y="48" font-family="ui-sans-serif,sans-serif" font-size="11" fill="white" text-anchor="middle" font-weight="700">3</text>
+  <text x="400" y="54" font-family="ui-sans-serif,sans-serif" font-size="13" fill="#4a6888" text-anchor="middle">Productos · Categorías · Cuenta</text>
+
+  <!-- Product cards row -->
+  <!-- Card 1 -->
+  <rect x="40" y="90" width="214" height="234" rx="12" fill="#0d1036" fill-opacity="0.5" stroke="#1e2456" stroke-width="1"/>
+  <rect x="40" y="90" width="214" height="118" rx="12" fill="#0f1a40"/>
+  <rect x="40" y="190" width="214" height="18" fill="#0f1a40"/>
+  <!-- Product illustration: package box -->
+  <rect x="106" y="118" width="82" height="70" rx="6" fill="#79dcff" fill-opacity="0.12" stroke="#79dcff" stroke-opacity="0.35" stroke-width="1.2"/>
+  <line x1="106" y1="140" x2="188" y2="140" stroke="#79dcff" stroke-opacity="0.25" stroke-width="1"/>
+  <line x1="147" y1="140" x2="147" y2="188" stroke="#79dcff" stroke-opacity="0.2" stroke-width="1"/>
+  <rect x="122" y="148" width="50" height="30" rx="4" fill="#79dcff" fill-opacity="0.08" stroke="#79dcff" stroke-opacity="0.2" stroke-width="1"/>
+  <!-- price tag -->
+  <text x="58" y="232" font-family="ui-sans-serif,sans-serif" font-size="13" fill="#c8d0ff">Producto A</text>
+  <text x="58" y="250" font-family="ui-sans-serif,sans-serif" font-size="15" fill="#79dcff" font-weight="700">$89.99</text>
+  <rect x="58" y="262" width="178" height="30" rx="8" fill="#7c3aed" fill-opacity="0.7"/>
+  <text x="147" y="281" font-family="ui-sans-serif,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="600">Agregar al carrito</text>
+
+  <!-- Card 2 (featured) -->
+  <rect x="274" y="90" width="252" height="234" rx="12" fill="#0d1036" fill-opacity="0.5" stroke="#79dcff" stroke-opacity="0.35" stroke-width="1.5"/>
+  <rect x="274" y="90" width="252" height="118" rx="12" fill="#0d2040"/>
+  <rect x="274" y="190" width="252" height="18" fill="#0d2040"/>
+  <!-- Product illustration: bag -->
+  <path d="M370 130 Q400 110 430 130 L440 188 L360 188 Z" fill="#79dcff" fill-opacity="0.1" stroke="#79dcff" stroke-opacity="0.35" stroke-width="1.2"/>
+  <path d="M382 130 Q400 118 418 130" fill="none" stroke="#79dcff" stroke-opacity="0.5" stroke-width="1.5"/>
+  <rect x="390" y="148" width="20" height="16" rx="4" fill="#a78bfa" fill-opacity="0.4"/>
+  <rect x="448" y="96" width="34" height="18" rx="6" fill="#22d3ee" fill-opacity="0.18" stroke="#22d3ee" stroke-opacity="0.4" stroke-width="0.8"/>
+  <text x="465" y="109" font-family="ui-sans-serif,sans-serif" font-size="11" fill="#22d3ee" text-anchor="middle">NEW</text>
+  <text x="292" y="232" font-family="ui-sans-serif,sans-serif" font-size="13" fill="#c8d0ff">Producto B</text>
+  <text x="292" y="250" font-family="ui-sans-serif,sans-serif" font-size="15" fill="#79dcff" font-weight="700">$124.00</text>
+  <rect x="292" y="262" width="216" height="30" rx="8" fill="#79dcff"/>
+  <text x="400" y="281" font-family="ui-sans-serif,sans-serif" font-size="12" fill="#07091a" text-anchor="middle" font-weight="700">Agregar al carrito</text>
+
+  <!-- Card 3 -->
+  <rect x="546" y="90" width="214" height="234" rx="12" fill="#0d1036" fill-opacity="0.5" stroke="#1e2456" stroke-width="1"/>
+  <rect x="546" y="90" width="214" height="118" rx="12" fill="#1a1040"/>
+  <rect x="546" y="190" width="214" height="18" fill="#1a1040"/>
+  <!-- Product illustration: watch face -->
+  <circle cx="653" cy="152" r="34" fill="#a78bfa" fill-opacity="0.1" stroke="#a78bfa" stroke-opacity="0.35" stroke-width="1.2"/>
+  <circle cx="653" cy="152" r="22" fill="none" stroke="#a78bfa" stroke-opacity="0.25" stroke-width="1"/>
+  <line x1="653" y1="138" x2="653" y2="152" stroke="#a78bfa" stroke-opacity="0.7" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="653" y1="152" x2="663" y2="158" stroke="#a78bfa" stroke-opacity="0.5" stroke-width="1.5" stroke-linecap="round"/>
+  <text x="564" y="232" font-family="ui-sans-serif,sans-serif" font-size="13" fill="#c8d0ff">Producto C</text>
+  <text x="564" y="250" font-family="ui-sans-serif,sans-serif" font-size="15" fill="#a78bfa" font-weight="700">$199.99</text>
+  <rect x="564" y="262" width="178" height="30" rx="8" fill="#7c3aed" fill-opacity="0.7"/>
+  <text x="653" y="281" font-family="ui-sans-serif,sans-serif" font-size="12" fill="white" text-anchor="middle" font-weight="600">Agregar al carrito</text>
+
+  <!-- Auth + DB badges bottom -->
+  <rect x="40" y="346" width="720" height="56" rx="10" fill="#0d1036" fill-opacity="0.5" stroke="#1e2456" stroke-width="1"/>
+  <text x="66" y="373" font-family="ui-monospace,monospace" font-size="13" fill="#4a6888">Auth:</text>
+  <rect x="108" y="358" width="68" height="22" rx="6" fill="#7c3aed" fill-opacity="0.2" stroke="#a78bfa" stroke-opacity="0.3" stroke-width="0.8"/>
+  <text x="142" y="373" font-family="ui-monospace,monospace" font-size="13" fill="#a78bfa" text-anchor="middle">Session</text>
+  <text x="200" y="373" font-family="ui-monospace,monospace" font-size="13" fill="#4a6888">  Stack:</text>
+  <rect x="266" y="358" width="66" height="22" rx="6" fill="#22d3ee" fill-opacity="0.12"/>
+  <text x="299" y="373" font-family="ui-monospace,monospace" font-size="12" fill="#22d3ee" text-anchor="middle">Next.js</text>
+  <rect x="340" y="358" width="68" height="22" rx="6" fill="#4ade80" fill-opacity="0.1"/>
+  <text x="374" y="373" font-family="ui-monospace,monospace" font-size="12" fill="#4ade80" text-anchor="middle">Express</text>
+  <rect x="416" y="358" width="74" height="22" rx="6" fill="#f59e0b" fill-opacity="0.1"/>
+  <text x="453" y="373" font-family="ui-monospace,monospace" font-size="12" fill="#f59e0b" text-anchor="middle">MongoDB</text>
+  <rect x="498" y="358" width="98" height="22" rx="6" fill="#a78bfa" fill-opacity="0.1"/>
+  <text x="547" y="373" font-family="ui-monospace,monospace" font-size="12" fill="#a78bfa" text-anchor="middle">Handlebars</text>
+
+  <!-- DB icon right -->
+  <ellipse cx="720" cy="362" rx="34" ry="10" fill="#79dcff" fill-opacity="0.07" stroke="#79dcff" stroke-opacity="0.2" stroke-width="1"/>
+  <line x1="686" y1="362" x2="686" y2="384" stroke="#79dcff" stroke-opacity="0.15" stroke-width="1"/>
+  <line x1="754" y1="362" x2="754" y2="384" stroke="#79dcff" stroke-opacity="0.15" stroke-width="1"/>
+  <ellipse cx="720" cy="384" rx="34" ry="10" fill="#79dcff" fill-opacity="0.07" stroke="#79dcff" stroke-opacity="0.2" stroke-width="1"/>
+</svg>

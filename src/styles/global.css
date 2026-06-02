@@ -200,6 +200,7 @@ html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
   background-color: var(--color-bg);
+  transition: background-color 0.55s ease;
 }
 
 body {
@@ -212,6 +213,7 @@ body {
   color: var(--color-text);
   font-family:
     "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  transition: background-color 0.55s ease, color 0.45s ease;
 }
 
 ::selection {
@@ -634,4 +636,12 @@ a {
 
 .whatsapp-border-sweep:focus-visible {
   outline: none;
+}
+
+.hero-visual-glow {
+  opacity: 0.55;
+}
+
+:root[data-theme="light"] .hero-visual-glow {
+  opacity: 0.75;
 }

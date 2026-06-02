@@ -1,4 +1,4 @@
-import { LuArrowRight, LuBlocks, LuBrainCircuit, LuMonitorSmartphone } from 'react-icons/lu'
+import { LuArrowRight, LuDatabase, LuNetwork, LuServer} from 'react-icons/lu'
 import { servicesSection } from '../../data/site'
 import { Button } from '../ui/Button'
 import { CenteredSectionHeader } from '../ui/CenteredSectionHeader'
@@ -6,9 +6,9 @@ import { SectionShell } from '../ui/SectionShell'
 import { cardLiftClass, nameBlinkClass } from '../ui/portfolioStyles'
 
 const serviceIcons = {
-  web: LuMonitorSmartphone,
-  ai: LuBrainCircuit,
-  fullstack: LuBlocks,
+  1: LuServer,
+  2: LuNetwork,
+  3: LuDatabase,
 } as const
 
 export function ServicesSection() {
@@ -18,6 +18,7 @@ export function ServicesSection() {
   return (
     <SectionShell
       id="services"
+      scrollMarginTop="calc(var(--nav-offset)+2rem)"
       className="overflow-hidden"
       contentClassName="relative"
       bodyClassName="gap-8 sm:gap-12"

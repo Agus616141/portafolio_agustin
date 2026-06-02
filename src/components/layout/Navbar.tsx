@@ -1,4 +1,5 @@
 import type { MouseEvent } from 'react'
+import { useEffect, useRef } from 'react'
 import type { IconType } from 'react-icons'
 import {
   LuFolder,
@@ -35,7 +36,7 @@ type NavigationLinksProps = {
 function getNavLinkClass(active: boolean, compact = false) {
   return cn(
     navbarItemClass,
-    compact && 'min-w-11 justify-center px-3',
+    compact && 'min-w-9 justify-center px-2',
     active
       ? 'nav-link-active'
       : 'text-[var(--color-muted)] hover:bg-[var(--nav-hover-bg)] hover:text-[var(--color-text)]',
@@ -88,9 +89,36 @@ type NavbarProps = {
 
 export function Navbar({ theme, onToggleTheme }: NavbarProps) {
   const activeSection = useActiveSection(sectionIds)
+  const headerRef = useRef<HTMLElement | null>(null)
+
+  useEffect(() => {
+    function setNavOffset() {
+      if (!headerRef.current) return
+      const h = headerRef.current.offsetHeight
+      document.documentElement.style.setProperty('--nav-offset', `${h}px`)
+    }
+
+    setNavOffset()
+
+    let ro: ResizeObserver | null = null
+    if (window.ResizeObserver) {
+      ro = new ResizeObserver(() => setNavOffset())
+      if (headerRef.current) ro.observe(headerRef.current)
+    } else {
+      window.addEventListener('resize', setNavOffset)
+    }
+
+    return () => {
+      if (ro && headerRef.current) ro.unobserve(headerRef.current)
+      if (!ro) window.removeEventListener('resize', setNavOffset)
+    }
+  }, [])
 
   return (
-    <header className="fixed top-0 right-0 left-0 z-20 px-3 pt-[max(0.75rem,env(safe-area-inset-top))] pb-3 sm:px-4 sm:pt-[max(1rem,env(safe-area-inset-top))] sm:pb-4 md:px-6">
+    <header
+      ref={headerRef}
+      className="fixed top-0 right-0 left-0 z-20 px-3 pt-[max(0.75rem,env(safe-area-inset-top))] pb-3 sm:px-4 sm:pt-[max(1rem,env(safe-area-inset-top))] sm:pb-4 md:px-6"
+    >
       <div className="mx-auto flex max-w-6xl justify-center">
         <div className="nav-shell flex w-full max-w-full items-center justify-between gap-2 rounded-full px-2 py-2 sm:w-auto sm:max-w-fit sm:px-3 sm:py-3">
           <NavigationLinks
