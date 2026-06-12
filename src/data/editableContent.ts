@@ -68,11 +68,13 @@ export const editableContent = {
     },
     {
       description:
-        'Aplicacion desarrollada como proyecto final, con autenticacion, manejo de productos, base de datos y logica backend.',
-      tags: ['Next.js', 'Express', 'MongoDB', 'Handlebars','APIs REST'],
-      href: 'https://github.com/Agus616141/ecommerce-tp',
+        'Plataforma e-commerce full-stack con API REST, autenticacion JWT, pagos con Stripe y cliente React en monorepo.',
+      tags: ['Node.js', 'Express', 'TypeScript', 'PostgreSQL', 'React', 'Stripe'],
+      href: 'https://github.com/Agus616141/home-store-ecommerce',
       ctaLabel: 'Ver Proyecto',
       ctaType: 'github',
+      webHref: 'https://home-store-ecommerce.vercel.app',
+      webCtaLabel: 'Ver web',
       image: '/images/project-ecommerce-dark.svg',
       imageLight: '/images/project-ecommerce-light.svg',
       imageAlt: 'Vista conceptual del proyecto Ecommerce Fullstack',

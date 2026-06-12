@@ -148,22 +148,35 @@ export function ProjectsSection() {
                   </div>
 
                   <div className="flex flex-wrap items-center justify-between gap-3 pt-2 sm:pt-3">
-                    {isPlaceholderLink ? (
-                      <span className="inline-flex items-center gap-2 text-[0.92rem] font-semibold text-[var(--color-text)] opacity-80">
-                        <LinkIcon className="text-[0.98rem]" />
-                        <span>{project.ctaLabel}</span>
-                      </span>
-                    ) : (
-                      <a
-                        href={href}
-                        target={isExternalLink ? '_blank' : undefined}
-                        rel={isExternalLink ? 'noreferrer' : undefined}
-                        className="inline-flex items-center gap-2 text-[0.92rem] font-semibold text-[var(--color-text)] underline decoration-[var(--color-border-strong)] underline-offset-4 transition-all hover:text-[var(--color-accent-soft)] hover:decoration-[var(--color-accent-soft)]"
-                      >
-                        <LinkIcon className="text-[0.98rem]" />
-                        <span>{project.ctaLabel}</span>
-                      </a>
-                    )}
+                    <div className="flex flex-wrap items-center gap-4">
+                      {isPlaceholderLink ? (
+                        <span className="inline-flex items-center gap-2 text-[0.92rem] font-semibold text-[var(--color-text)] opacity-80">
+                          <LinkIcon className="text-[0.98rem]" />
+                          <span>{project.ctaLabel}</span>
+                        </span>
+                      ) : (
+                        <a
+                          href={href}
+                          target={isExternalLink ? '_blank' : undefined}
+                          rel={isExternalLink ? 'noreferrer' : undefined}
+                          className="inline-flex items-center gap-2 text-[0.92rem] font-semibold text-[var(--color-text)] underline decoration-[var(--color-border-strong)] underline-offset-4 transition-all hover:text-[var(--color-accent-soft)] hover:decoration-[var(--color-accent-soft)]"
+                        >
+                          <LinkIcon className="text-[0.98rem]" />
+                          <span>{project.ctaLabel}</span>
+                        </a>
+                      )}
+                      {'webHref' in project && project.webHref ? (
+                        <a
+                          href={project.webHref as string}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="inline-flex items-center gap-2 text-[0.92rem] font-semibold text-[var(--color-text)] underline decoration-[var(--color-border-strong)] underline-offset-4 transition-all hover:text-[var(--color-accent-soft)] hover:decoration-[var(--color-accent-soft)]"
+                        >
+                          <LuSquareArrowOutUpRight className="text-[0.98rem]" />
+                          <span>{'webCtaLabel' in project ? (project.webCtaLabel as string) : 'Ver web'}</span>
+                        </a>
+                      ) : null}
+                    </div>
                     <LuArrowRight className="text-[1rem] text-[var(--color-accent-soft)] transition-transform duration-[930ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-1" />
                   </div>
                 </div>
